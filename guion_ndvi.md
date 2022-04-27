@@ -79,7 +79,7 @@ Las siguientes secciones contienen información sobre cómo completar toda la pr
 1. Para las secciones 1, 2 y 3 necesitas descargar [este](https://drive.google.com/file/d/1FaCcUv8qAYGdpJNQKChQwOo7MwBtxOHj/view?usp=sharing) archivo comprimido (NDVI_maximo_anual.zip)  y guárdalo en una carpeta (que no sea el escritorio). Descomprime el archivo zip. Verás muchas imágenes con extensión .tif. Cada una de ellas muestra el valor máximo de NDVI de cada píxel para el año en cuestión. Esto se ha obtenido procesando imágenes del satélite Landsat que pasa por cada punto de la Tierra cada 16 días. Asegúrate de que Windows ha descomprimido correctamente el archivo.
 2. Ahora vamos a preparar un proyecto de QGIS en el que visualizar todos los resultados que obtengamos. En dicho proyecto pondremos ortofotografías de varios años para poder distinguir cuándo los cambios en el funcionamiento del bosque están alineados o no con cambios en su estructura. Para añadir estas fotografías a un proyecto de QGIS tienes dos opciones:
    * Opción fácil: 
-     * Descarga y descomprime [este](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/2021-2022/geoinfo/ortofotos_wms.zip) proyecto de QGIS a la carpeta en la que estés trabajando y ábrelo. Verás que se cargan ortofotografías de varias fechas. Todas ellas proceden de servicios WMS que yo he preparado para tí. 
+     * Descarga y descomprime [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/ortofotos_wms.zip) proyecto de QGIS a la carpeta en la que estés trabajando y ábrelo. Verás que se cargan ortofotografías de varias fechas. Todas ellas proceden de servicios WMS que yo he preparado para tí. 
      * Carga en este proyecto una imagen tif de las que has obtenido en el punto 1 de esta sección. Usaremos esa imagen únicamente para ubicarnos en la zona de estudio.
      * Guarda el proyecto y sigue con las distintas secciones.
    * Opción menos fácil...
@@ -89,30 +89,40 @@ Las siguientes secciones contienen información sobre cómo completar toda la pr
 
 
 
+### Sección 1: NDVI promedio de toda la serie temporal: Cantidad de biomasa fotosintéticamente activa
+
+En primer lugar analizaremos cómo el índice de vegetación es útil para caracterizar la cantidad de biomasa que hay en un lugar determinado. Para ello calcularemos el valor promedio del NDVI máximo anual para todos los píxeles de la zona de estudio. Haremos lo siguiente:
+
+1. Asegúrate de haber completado los dos pasos de la sección anterior.
+2. Ahora carga todas las imágenes QGIS. Puedes arrastrar los archivos tif a QGIS o seleccionar "cargar capa raster" del menú "capa". Verás muchas capas en una paleta de colores de escala de grises. Puedes cambiar la paleta a alguna imagen para ver mejor cómo se distribuye el NDVI máximo anual. 
+4. A continuación calcularemos el valor promedio de cada año para cada píxel. Abre la calculadora raster del menú "raster". Ahí debes de ir seleccionando todas las capas haciendo click sobre ellas y sumándolas. Luego pon un paréntesis entre todas las capas y divídelo todo por el número de capas. Así obtendremos el valor promedio. Guarda la imagen en tu carpeta y llámale "ndvi_promedio_2000_2020.tif".
+4. Acabado el cálculo, se cargará la imagen automáticamente. Una vez que esto ocurra, represéntala con la paleta de colores "greens". Como siempre: doble click sobre la capa, pestaña de estilo o simbología (dependiendo de tu versión de QGIS), "single band pseudocolor". Ponla también algo transparente (50%) para que se vea la ortofoto de fondo.
+4. Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/2021-2022/geoinfo/ndvi_promedio_2000_2020.tif) puedes descargar el resultado que deberías haber obtenido. 
 
 
 
-### Escala interanual: Caracterización de la serie temporal de NDVI desde 2000 hasta 2020
 
-El conjunto de procedimientos de agrupación y análisis de datos que realizaremos se puede ver en el siguiente esquema (puedes hacer zoom en él seleccionando la lupa que hay en la parte inferior). Dicho esquema se puede descargar [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2020-2021/presentaciones/flujograma_NDVI.zip) en formato editable (usando una aplicación llamada [diagrams.net](https://www.diagrams.net/)). Este flujo de trabajo está también explicado en [este](https://youtu.be/22dlKcNa_SI) vídeo.
+### Sección 2: Serie temporal de NDVI anual: escala interanual
 
+Este flujo de trabajo está también explicado en [este](https://youtu.be/22dlKcNa_SI) vídeo. La idea es generar una gráfica que muestre los valores máximos anuales de NDVI en cada píxel. Esto nos permitirá conocer cómo cambia el NDVI a lo largo de los 21 años que estamos estudiando. Veremos el impacto de las sequías o de los incendios forestales, por ejemplo. 
 
-<iframe frameborder="0" style="width:100%;height:895px;" src="https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=flujograma_NDVI.drawio#R%3Cmxfile%20pages%3D%222%22%3E%3Cdiagram%20id%3D%22C5RBs43oDa-KdzZeNtuy%22%20name%3D%22Page-1%22%3E7Vxbd5u6Ev41Xuvsh7BA4vrYxHGanTQ72Wmb9rx0yaBgtYBcwInTX39GXAxYGDupbZzmOK0tJCGk%2BWZGMyOJAT4J52cxmU4%2BcI8GA6R68wEeDhCyDRW%2BRcZTnmGiIsOPmZdnaVXGLftFi8yy2ox5NGlUTDkPUjZtZro8iqibNvJIHPPHZrV7HjSfOiU%2BlTJuXRLIuXfMSyd5LsLYrAreU%2BZPykebhp6XhKSsXQwlmRCPP9ay8OkAn8Scp3kqnJ%2FQQBCvJMzd%2BdNdcPnDPPv7JvlJPh1ffLz6fJQ3NnrOLYsxxDRKN236U0Ljf8bfBU2RGpAxwJrdmbdVPm88jF3j6%2BUF%2B%2FU4fIwn50e%2Bbx6Z1egWHUzSp5KkMZ9FHhUNaAN8%2FDhhKb2dEleUPgIPQd4kDYOi%2BJ4FwQkPeJzdiz2D2p4O%2BUka8x%2B0VmKjMTZNKHF5yFzIUyHtByRJijSHZ7BUsKEhLjekSUG7BxqndF5jiWJ0Z5SHNI2foEpRauqKkd9TcLyGzIIBHisG0u1FtUmNe2ynoC8p2NZftF8hA4mCrOVlDat2tmiFybCLsZFgRuvgbgmr0ejUPDmRsIp4RDtg2hUuJWVLVHQNSahoyGlDRXPUZ6OyIQTGW4IAYUk2sC7LBirz6hjo2s4w0LaMwSqyLqsyQu17dxU2u8JAs9QmApYlI4BNR0YA60hx8K5AkEhOPZiHi0sepxPu84gEp1XucQVKpt4XdS45nxZQfKdp%2BlQYFWSW8iZQz6NxwmexW3Tu5ubLF%2BO%2FX5x%2FLq0H9%2Fo%2BtIdf8VGp5lMS%2BzTtGGxBRDHCTshiGpCUPTQtkWeQfvUUbgbQv2OPPUDSF8kzzn0gKlJPCdBR%2FEY%2BA0YsakLDtcot9%2F%2FHBcMvGxNLefzXqvvEAAIW%2Fcj7MUlTYcW9E%2F1HI9GCQsXjafZsxc%2F6pIA4ZRXqZkcH%2FVeaHSSZ5gbiPZsLrjme0pgBCamQOqgNFiW9rrLqjEIC5keQdoFRsrKFKSc4zyPJZMGGibAyIv9jxoIYMliYWZjl75CFPgwnYGP4Jq6A95vHYugZF1iOHun4G8AGAq0kD77QGjxKCw62dqmbTUuxnNqnqaiRqpuKqamLjyYrDdSitZ%2BvtDcxZ9rhN9fr8T0olRpeAn6AKX76IpqDqa%2B4%2FFpUzS6G8%2BJZ%2BdXTi%2Bbg7ekmtG3dVNx6zVmU1tjNwt3shlrZrXxAPoyizSVWWnTy5bMRsvvgnANhFUvblFWsPc1jm4FWeuQ9gabVIasheGCgYaMv0Dr7XVPaH9n9vQifzIKUjUnkEbi4Gn4%2Bl9CFSXgqkkBEEgQ04H5MwqV5vVFWn93X%2BVHNWTfJk6qiqdiq%2FiF7l1My1lCXjtQMbCkOqoptaUp2WhwpvCs%2FCjkylBSEK3JZBaFKoyyCl6EaiC%2BY65mwHFMaTjmA9X%2BYl11k04HyvWHbLqZ6i22Vm%2FiChA3AzJ8zXhYc5RQFC1%2B1pvOqbOF2xIMTPHin3TMX%2BoxUL%2BeEgmuS8hnjuOZ6kFCAGI0T8ZPdkLPWwuPIe1R3OTq9AGFE0Pj0AWBNCrZYbd7XeEeOQKriD0oyV%2BuaJyxlvOE2CKaAkQaXSxXGPE15WKvwrnA4UjELye7HUiQhZ5u835mohHNfBOOVMHEJ%2BFE0oiAeSpYnW6jistZY%2FtllBELXlTq7O3qT33VQa6YuuxdWC79bO9Jl%2FZoSC2th16ZElwdw8FGMczFfQC9FazElpfbIpDnTKk4y6Aw4eDH0qhllAMGiogT%2Ba1f8xvn66bv1K764C96f%2Ffzh3t6hb0fa1cO16kWmaOGBUdASo5lQRUMQvhg8%2F0EjULGawquXRyY8HM%2BSZ09eu5JXpHa6appjrYsM6C3RxDJvHwsdWsn6fblzumk1RdqxnTVCnV3VLJldSDreUNLtniX9lgbUdWGqzIS9NBgvwTdIiKhqbSBz%2BFXJHFY7o3GvQOasFoNxSQZ9ELHpb1JwsfBPxmWzaidlkd1tbdtQ3u1UaVqL5W3syquS12gLR4pEs1flLHVyyXrBWAQGJTz26uTKPu7bhKMsXVpM7Bmd8vkyPC7JIg6aKczEzLN8Y0j1LThaLyH1LRtM5ZaRtRaTtvUoa%2FsyCja6ZzPL6HUZpW%2B7G1dmdmF3G%2BYB2N2bs5G5bTb6vQivbMP9kctivwnavpbFVrlLJzycitiicJLCPL46X0RJ64ZKt8J%2BXVEKjLCCujSh7SjIrDQhkqbDvj0mDb9l6dp0f0IphoeiEnuOFPcLmiOD1rnK259KjGkWO8o2YYkVyPrq8npV6LwuVYi7VaGpHnrwCPWsCntdfyl9h%2FWq0NmTk4G6nQwTay9wMt7FMXmqVcvWYZPVvUDrXB2MWnoxemFr7WNa1drLKFQJTU6LrfpemnyyoDAAS5OQhVyQX1wdayIpe2uHGxTZ1tKW081TmqU4uMINS5pyvzts9LdsbJj9qsXn6itsdC%2FhmFC%2Bb50g75BepxNkj%2F9P1wnrtmMdmk7o5eTM%2Fne9doZaDsdUstYYAmJbu1oVL%2B1f2pKppJvdOzaeadysWTHtw7iRV5fXKbL5m1NkumYvn7Y8MN1VNvwm7Rm0qe5CW9ddzwyefKztxxXbLeD7AxHfF1BAMpgH64Mo%2BXj%2FmCBKvku1S5T6DqLgP2HFFbcEQzp3qPcmJZ9ZMiMB%2B5XFGbMY483ZeSUx02DmM5G4jnm%2ByzR7j0n%2B%2BFU7VPObEuWnzxKFx36VJVJ5Q3krS%2BdjO2j5aiRQw3bnPnEDOYpuHrIEGkgyU1aes16SVKBROug%2Bg7x8ViBknpfLMAV7o9gPJ6S4MBehXeN4YAxFWyC2hU2yALR4dnldOxGgD8XfLnWts2ypINVoNZTr2%2FBwi6mCdmWqGPIBmH8PGrTRyAaZ2KV5CRMgXpJIex1oaK%2BYyZv1QCXfvm3YbMkpMMzmMUJTQs3YEWrDk%2FhixK9n82BIvunh%2B%2BTRCBYjkk%2BaZW%2BSWH%2FQTGs9aTaaRdkO8pABQYVDmL%2BuwgVskpSGmW0rZu2177t4aQeg4JZR8IUhcUUfsv2Iq1%2BScUjsWcz1miWzq6qa5m4Pi8E8YEnv03IahoEhMSz0S%2BbYF2zRhsvq9Wx58KJ6yR0%2B%2FR8%3D%3C%2Fdiagram%3E%3Cdiagram%20id%3D%22Kc0jzny5qIj9sLP9HgPE%22%20name%3D%22Page-2%22%3EldG9DsIgEADgp2E0qUWNs%2FUvJi5q4s9iSDkLSnuVYlp9emugVuKiC4GP4%2BAOQqO0mmmWiyVyUCQMeEXomIThcDCsxxfcLfQotZBoyS11W1jLBzgMnN4kh8ILNIjKyNzHGLMMYuMZ0xpLP%2ByEyr81Zwl8wTpm6lu3khvhyuoHrc9BJqK5uRu4nZQ1wQ4KwTiWH0QnhEYa0dhZWkWgXr1r%2BrLf3LaH83R0XV12CziWQhfnjk02%2FefIuwQNmfk1dT1pn1YvvP%2Blkyc%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E"></iframe>
+Seguiremos los siguientes pasos:
 
-
-Empezamos:
-
-- Ve copiando y pegando el código que aparece abajo en un archivo de R. Para crear dicho archivo haz lo siguiente:
-  - Abre Rstudio
-  - Dale al botón archivo y crear nuevo archivo de R.
-  - Guarda el archivo de R en tu directorio de trabajo.
-  - Ve copiando lo que va apareciendo a continuación.
-- (1) Primero establecemos el directorio de trabajo. Sustituye lo que hay entre comillas por tu ruta. Para acceder a la ruta, usa tu explorador de archivos, ponte sobre la barra de navegación, botón derecho y copiar ruta en modo texto. 
+1. Si no has hecho la sección anterior debes realizar los dos pasos que hay al final de la sección denominada: **secuencia de acciones a realizar**
+1. Abre Rstudio
+2. Dale al botón archivo y crear nuevo archivo de R.
+3. Guarda el archivo de R en tu directorio de trabajo. Ahora iremos pegando en ese archivo las líneas de código siguientes:
+4. Primero establecemos el directorio de trabajo. Sustituye lo que hay entre comillas por tu ruta. Para acceder a la ruta, usa tu explorador de archivos, ponte sobre la barra de navegación, botón derecho y copiar ruta en modo texto. Ten en cuenta que en windows, cuando copies la ruta de la carpeta, pondrá las barras hacia la izquierda (así: \). Tienes que cambiarlas a mano y ponerlas hacia la derehca (así: /)
 
 ```{r}
 ## Definimos directorio de trabajo y cargamos los paquetes necesarios
 setwd("/Users/fjbonet_trabajo/Downloads/ndvi")
 
+```
+
+5. Ahora instalamos y cargamos una serie de paquetes que necesitamos para trabajar. Los paquetes de R son conjuntos de funcionalidades que no están en el software original y que permiten hacer cosas nuevas. En nuestro caso estos paquetes nos permiten trabajar con imágenes raster y también hacer un análisis estadístico concreto. 
+
+```{r}
 #Instalar y cargar los paquetes necesarios.
 install.packages("Kendall")
 install.packages("rgdal")
@@ -125,7 +135,7 @@ library(Kendall)
 ```
 
 
-- (2) Crea una *pila* de archivos que contiene todos los archivos con extensión *.tiff* que estén en tu carpeta de trabajo.
+6. Crea una *pila* de archivos que contiene todos los archivos con extensión *.tiff* que estén en tu carpeta de trabajo.
 
      - Primero creamos una lista con los nombres de todos los archivos con extensión *tif* que hay en tu carpeta de trabajo. Ten cuidado porque si has cargado antes los archivos .tif en QGIS es posible que se hayan creado otros archivos con extensión *.tif.xml*. Estos archivos también serán seleccionados por la función *list.files* que se describe más abajo. Borra o mueve todos los archivos con tiff en el nombre que no sean los que corresponden a las imágenes de NDVI máximo anual. 
      - Luego usamos la función *slack* para crear una pila de archivos con los tif anteriores. Se crea un tipo de objeto llamado [*RasterStack*](https://www.rdocumentation.org/packages/raster/versions/3.0-12/topics/stack). Es una colección de capas raster que tienen la misma extensión y resolución espacial. 
@@ -143,64 +153,88 @@ plot(ndvis)
 
 
 # Exportamos la imagen a tif
-writeRaster(ndvis, filename="ndvi_1999_2018.tif", format="GTiff", overwrite=TRUE)
+writeRaster(ndvis, filename="ndvi_2000_2021.tif", format="GTiff", overwrite=TRUE)
 
  ```
 
-- (3) Ejecutamos un test estadístico llamado [Mann Kendall](https://www.statisticshowto.datasciencecentral.com/mann-kendall-trend-test/) sobre todas las bandas del objeto multicapa creado anteriormente. Este test permite analizar la evolución temporal de una serie de datos identificando si la tendencia es ascentente o descendente. Es un test no paramétrico, así que puede usarse en todas las distribuciones de datos.  
+7. Volvemos a QGIS y cargamos la capa que acabamos de crear (**ndvi_2000_2021.tif**). Contiene una banda por año. Y cada banda muestra el valor máximo de NDVI de ese año. Usaremos esta capa para construir automáticamente gráficas con las series temporales de cada píxel.
+7. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/2021-2022/geoinfo/ndvi_2000_2021.tif) tienes la imagen con todas las bandas correspondientes a los años de nuestra serie temporal. 
+8. Instala un plugin (o complemento en castellano) llamado  "_Temporal/Spectral profile tool_". Menu _plugins_->_Manage and install plugins_. La instalación creará un nuevo botón que representa un gráfico rojo. 
+9. Selecciona la capa **_ndvi_2000_2021_** en QGIS.
+10. Haz click en el botón del plugin que acabas de instalar.
+11. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los años. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "year". Esto solo funciona en las versiones recientes de QGIS, no en la que usamos nosotros (2.16). En el caso de la versión 2.6 hacemos lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada año separado por punto y coma, así: 2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019;2020 
+12. Haz click en cualquier punto del mapa para que se muestre una imagen como la que ves a continuación. 
 
-   - "Encapsulamos" el test estadístico  [Mann Kendall](https://www.rdocumentation.org/packages/Kendall/versions/2.2/topics/MannKendall) en una funciónde R _fun_k_.
-   - Luego creamos un nuevo objeto llamado  _kendal_result_ que contiene el resultado de aplicar la función Kendall al conjunto de datos (*ndvis*).
-   - El resultado es otro objeto espacial que contiene cinco bandas. Solo prestaremos atención a las siguientes:
-     - _tau_= Es el estadístico *tau* del test de Kendall. Contiene la tendencia que el test ha identificado en cada elemento de la serie. Los valores negativos indican que la tendencia es descentente y ascendente si son positivos. Es decir, valores positivos indican que hay una tendencia hacia más NDVI en el pixel en cuestión. 
-     - _sl_= Es el p-valor del test. Muesta el valor de significación del test en cada píxel.  
-   - Finalmente exportamos la banda *tau* a una imagen llamada *tau.tif*.
+
+
+![graph](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/main/imagenes/graph.png)
+
+
+### Sección 3: Cuantificación de la tendencia en la serie de NDVI anual: escala interanual
+
+En las gráficas anteriores vemos cómo en algunos píxeles hay una tendencia hacia más NDVI y en otros hacia menos. Esto puede deberse a varios factores ambientales: incendios (caídas bruscas del NDVI), tratamientos forestales de reducción de la densidad (caídas de NDVI) o regeneración natural de la vegetación (aumento sostenido del NDVI). Es posible cuantificar esta tendencia usando un test estadístico llamado Mann Kendall. Este test analiza los valores anuales de NDVI y cuantifica si se ajusta a una línea ascendente o descendente. Si la tendencia es hacia más NDVI, el valor del test será positivo (como máximo de 1). Si la tendencia es negativa, el test arrojará un valor número negativo (mínimo de -1). Procederemos de la siguiente forma:
+
+1. Para completar esta sección debes de hacer también la anterior.
+1. Volvemos a Rstudio.
+2. Ejecutamos un test estadístico llamado [Mann Kendall](https://www.statisticshowto.datasciencecentral.com/mann-kendall-trend-test/) sobre todas las bandas del objeto multicapa creado anteriormente. Este test permite analizar la evolución temporal de una serie de datos identificando si la tendencia es ascentente o descendente. Es un test no paramétrico, así que puede usarse en todas las distribuciones de datos. Para hacer esto pega el siguiente código en RStudio:
+3. "Encapsulamos" el test estadístico  [Mann Kendall](https://www.rdocumentation.org/packages/Kendall/versions/2.2/topics/MannKendall) en una funciónde R _fun_k_.
 
  ```r
 ## Calculamos la serie temporal de todos los pixeles
 
 fun_k <-function(x){return(unlist(MannKendall(x)))}
+ ```
+
+4. Luego creamos un nuevo objeto llamado  _kendal_result_ que contiene el resultado de aplicar la función Kendall al conjunto de datos (*ndvis*). El resultado es otro objeto espacial que contiene cinco bandas. Solo prestaremos atención a las siguientes:
+- - _tau_= Es el estadístico *tau* del test de Kendall. Contiene la tendencia que el test ha identificado en cada elemento de la serie. Los valores negativos indican que la tendencia es descentente y ascendente si son positivos. Es decir, valores positivos indican que hay una tendencia hacia más NDVI en el pixel en cuestión. 
+  - _sl_= Es el p-valor del test. Muesta el valor de significación del test en cada píxel.  
+
+ ```r
 kendal_result <-calc(ndvis, fun_k)
 
+ ```
+
+5. Finalmente exportamos la banda *tau* a una imagen llamada *tau.tif*.  Si el comando que hay a continuación te da un error, intenta a sustituir "tau" por "layer.1" después del símbolo $. Pero no pongas las comillas.
+
+ ```r
 # Exportamos la tendencia (tau) a un tif
 writeRaster(kendal_result$tau, filename="tau.tif", format="GTiff", overwrite=TRUE)
  ```
 
-- (4) Cargamos toda la información en QGIS. Para visualizar la información que hemos generado, procedemos de la siguiente manera.
-  - Abrimos un proyecto de QGIS nuevo.
-  - En el menú capa seleccionamos la opción de cargar capa raster. Navegamos a la carpeta donde esté la información y seleccionamos las siguientes capas:
-    - **ndvi_1999_2018.tif**: Contiene una banda por año. Y cada banda muestra el valor máximo de NDVI de ese año. Usaremos esta capa para construir automáticamente gráficas con las series temporales de cada píxel.
-    - **tau.tif**: Contiene los valores de tendencias de NDVI para cada píxel. Una vez cargada hacemos doble click sobre la misma y la representamos usando el método de *singleband pseudocolor* y la paleta *spectral*. Ajusta el valor máximo a 0.99 y haz click en "elimina valores fuera de rango". Por último, le asignamos un grado de transparencia del 50%.
-    - **ortofoto reciente**: Cargamos o creamos (Según lo tengas creado o no) un servicio WMS con la ortofotografía más reciente. Si tienes que crearlo, la URL de este servicio es: http://www.ign.es/wms-inspire/pnoa-ma
-
-+ (5) Vamos a construir un gráfico que muestra la tendencia de NDVI para cualquier píxel de la zona de estudio. Sigue estos pasos para ello:
-
-  + Instala un plugin llamado  "_Temporal/Spectral profile tool_". Menu _plugins_->_Manage and install plugins_. La instalación creará un nuevo botón que representa un gráfico rojo. 
-  + Selecciona la capa "_ndvi_1999_2018_" en QGIS.
-  + Haz click en el botón del plugin que acabas de instalar.
-  + Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los años. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "year". Esto solo funciona en las versiones recientes de QGIS, no en la que usamos nosotros (2.16). En el caso de la versión 2.6 hacemos lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada año separado por punto y coma, así: 2000;2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018. 
-  + Haz click en cualquier punto del mapa para que se muestre una imagen como la que ves a continuación. 
+6. Ahora cargamos la capa recién creada (tau.tif) en QGIS. Esta capa contiene los valores de tendencias de NDVI para cada píxel. Una vez cargada hacemos doble click sobre la misma y la representamos usando el método de *singleband pseudocolor* y la paleta *spectral*. Ajusta el valor máximo a 0.99 y haz click en "elimina valores fuera de rango". Por último, le asignamos un grado de transparencia del 50%. Ahora podemos ver la tendencia de manera muy atractiva: los píxeles donde hay tendencia hacia más NDVI tienen colores verdes. Los que tienen tendencia hacia menos NDVI se muestran en rojo. 
+7. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://drive.google.com/file/d/1lLdSjCHwkchLx0rrvnq3uCViQ2mxRcgo/view?usp=sharing) tienes la capa tau con la tendencia de NDVI para cada píxel. 
+7. Selecciona en QGIS la capa que hemos usado en el bloque anterior (**ndvi_2000_2020**). Haz click en cualquier parte del mapa y verás la gráfica de los valores máximos de NDVI en ese punto.
 
 
 
-![graph](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2020-2021/imagenes/graph.png)
+### Sección 4: Estacionalidad en el NDVI: escala intraanual
 
-El resultado de este flujo de trabajo está en estas dos imágenes:
-+ [ndvi_2000_2020_anual.tif](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/blob/2020-2021/geoinfo/ndvi_2000_2020_anual.tif): es una imagen que tiene tantas bandas como años. En cada banda y para cada píxel se muestra el valor máximo de NDVI de cada año. 
-+ [tau_2000_2020.tif](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/blob/2020-2021/geoinfo/tau_2000_2020.tif): Muestra la tendencia de NDVI para cada píxel en la serie temporal descrita en la imagen anterior. 
+En esta última parte de la práctica cambiaremos de escala. Ahora, en lugar de analizar los valores de NDVI de cada año, usaremos los valores promedios de cada mes de un año concreto: 2000. Así, obtendremos una gráfica que muestra la estacionalidad (cambios de la producción primaria a lo largo del año). Procederemos de la siguiente manera:
+
+1. Descarga [esta](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/2021-2022/geoinfo/ndvi_2000_mensual.tif) (**ndvi_2000_mensual.tif**) imagen y cárgala en QGIS. Verás que QGIS la representa con una gama de colores muy peculiar. Eso se debe a que tiene muchas bandas. Concretamente 12. Una por mes. La banda 1 es enero, la 2, febrero y así sucesivamente. En cada banda hay información del valor máximo de NDVI en cada píxel para el mes en cuestión. También es posible que, dependiendo de la versión de QGIS que estés utilizando, se represente esta capa como totalmente en blanco. No te preocupes si ocurre eso. Todo está bien. 
+2. Selecciona la capa **_ndvi_2000_mensual.tif_** en QGIS.
+3. Haz click en el botón del plugin que hemos usado antes para generar la gráfica de toda la serie temporal. Dale al botón "add layer" para añadir a la herramienta la capa que queremos.
+4. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los meses. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "mes". Esto solo funciona en las versiones recientes de QGIS, no en la que usamos nosotros (2.16). En el caso de la versión 2.6 hacemos lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada mes separado por punto y coma, así: 1;2;3; etc.  
+5. Observa la imagen que ves abajo y haz zoom a las zonas marcadas como 1 y 2 cuando el profesor diga.
 
 
 
-### Escala intraanual: Imagen de NDVI promedio de cada mes del año 2000 
+![sierranevada](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/2021-2022/imagenes/sierranevada.png)
 
-Esta primera actividad nos permitirá conocer cómo cambia la producción primaria a lo largo de un año "tipo" (2000). Para ver esto solo tenemos que descargar [esta](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/blob/2020-2021/geoinfo/ndvi_2000_mensual.tif) imagen y abrirla en QGIS. Luego sigue las mismas instrucciones que se mostraron anteriormente para generar una gráfica con la evolución temporal de NDVI (punto 5 del flujo de trabajo anterior)
+
+
+6. Genera una gráfica para las formaciones que hay en el margen oeste del valle que hay en la zona 1. Copia la gráfica y la pegas a un archivo de word. 
 
 
 
 ## Discusión
-Una vez obtenidos los resultados, los analizaremos usando para ello el conocimiento ya adquirido sobre el concepto de producción primaria. Trataremos de responder a las siguientes preguntas:
-+ ¿Hay un patrón consistente en el NDVI conforme cambia la altitud? En caso afirmativo, ¿qué patrón es? ¿a qué se puede deber?
-+ ¿Podemos observar patrones espaciales en la distribución de la tendencia de NDVI en la zona de estudio?, ¿qué explicación pueden tener esos patrones?
-+ ¿Podemos distinguir el tipo de formación vegetal en función de la forma de la gráfica intraanual de NDVI?
-+ ¿Cómo será una curva intraanual de NDVI para un pastizal?, ¿Y para un bosque de hoja perenne?
+Una vez obtenidos los resultados, los analizaremos usando para ello el conocimiento ya adquirido sobre el concepto de producción primaria. 
+
+"Iremos" a varios lugares de Sierra Nevada y aprenderemos algo del funcionamiento de sus ecosistemas forestales mediante el análisis de toda la información anterior.
+
+Si has conseguido hacer todos los pasos anteriores, descarga esta capa que contiene los lugares que visitaremos. Pon esa capa en tu proyecto de QGIS y espera instrucciones...
+
+Si no lo has conseguido, descarga este archivo zip que contiene toda la información ya compilada en un proyecto de QGIS. Descomprime el archivo y ponlo en una carpeta diferente a la que has usado para trabajar. Una vez hecho eso, abre el proyecto de QGIS denominado "NDVI_Sierra_Nevada.qgz". Luego, espera instrucciones...
+
+
 
