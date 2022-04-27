@@ -1,0 +1,1 @@
+ndvi_2000_mensual.tif filter=lfs diff=lfs merge=lfs -text
