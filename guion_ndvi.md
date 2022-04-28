@@ -78,7 +78,6 @@ Las siguientes secciones contienen información sobre cómo completar toda la pr
 2. Ahora vamos a preparar un proyecto de QGIS en el que visualizar todos los resultados que obtengamos. En dicho proyecto pondremos ortofotografías de varios años para poder distinguir cuándo los cambios en el funcionamiento del bosque están alineados o no con cambios en su estructura. Para añadir estas fotografías a un proyecto de QGIS tienes dos opciones:
    * Opción fácil: 
      * Descarga y descomprime [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/ortofotos_wms.zip) proyecto de QGIS a la carpeta en la que estés trabajando y ábrelo. Verás que se cargan ortofotografías de varias fechas. Todas ellas proceden de servicios WMS que yo he preparado para tí. 
-     * Carga en este proyecto una imagen tif de las que has obtenido en el punto 1 de esta sección. Usaremos esa imagen únicamente para ubicarnos en la zona de estudio.
      * Guarda el proyecto y sigue con las distintas secciones.
    * Opción menos fácil...
      * Crea un proyecto QGIS vacío. 
@@ -102,7 +101,7 @@ En primer lugar analizaremos cómo el índice de vegetación es útil para carac
 
 ### Sección 2: Serie temporal de NDVI anual: escala interanual
 
-Este flujo de trabajo está también explicado en [este](https://youtu.be/22dlKcNa_SI) vídeo. La idea es generar una gráfica que muestre los valores máximos anuales de NDVI en cada píxel. Esto nos permitirá conocer cómo cambia el NDVI a lo largo de los 21 años que estamos estudiando. Veremos el impacto de las sequías o de los incendios forestales, por ejemplo. 
+Este flujo de trabajo está también explicado en [este](https://youtu.be/22dlKcNa_SI) vídeo. La idea es generar una gráfica que muestre los valores máximos anuales de NDVI en cada píxel. Esto nos permitirá conocer cómo cambia el NDVI a lo largo de los 21 años que estamos estudiando. Veremos el impacto de las sequías o de los incendios forestales, por ejemplo. A lo largo de la sección verás una explicación de la función que queremos realizar y luego unas líneas de código que la ejecutan. Debes de leer el texto explicativo, tratar de entenderlo y luego ejecutar una a una las líneas de código que hay debajo. 
 
 Seguiremos los siguientes pasos:
 
@@ -110,7 +109,7 @@ Seguiremos los siguientes pasos:
 1. Abre Rstudio
 2. Dale al botón archivo y crear nuevo archivo de R.
 3. Guarda el archivo de R en tu directorio de trabajo. Ahora iremos pegando en ese archivo las líneas de código siguientes:
-4. Primero establecemos el directorio de trabajo. Sustituye lo que hay entre comillas por tu ruta. Para acceder a la ruta, usa tu explorador de archivos, ponte sobre la barra de navegación, botón derecho y copiar ruta en modo texto. Ten en cuenta que en windows, cuando copies la ruta de la carpeta, pondrá las barras hacia la izquierda (así: \). Tienes que cambiarlas a mano y ponerlas hacia la derehca (así: /)
+4. Primero establecemos el directorio de trabajo. Sustituye lo que hay entre comillas por tu ruta. Para acceder a la ruta, usa tu explorador de archivos, ponte sobre la barra de navegación, botón derecho y copiar ruta en modo texto. Ten en cuenta que en windows, cuando copies la ruta de la carpeta, pondrá las barras hacia la izquierda (así: \). Tienes que cambiarlas a mano y ponerlas hacia la derehca (así: /). Copia en R el texto inferior y luego ejecuta con el botón etiqutado con "Run" (Run the current line or selection). Procede así con todas las líneas de código que hay en este guión. 
 
 ```{r}
 ## Definimos directorio de trabajo y cargamos los paquetes necesarios
@@ -136,6 +135,7 @@ library(Kendall)
 6. Crea una *pila* de archivos que contiene todos los archivos con extensión *.tiff* que estén en tu carpeta de trabajo.
 
      - Primero creamos una lista con los nombres de todos los archivos con extensión *tif* que hay en tu carpeta de trabajo. Ten cuidado porque si has cargado antes los archivos .tif en QGIS es posible que se hayan creado otros archivos con extensión *.tif.xml*. Estos archivos también serán seleccionados por la función *list.files* que se describe más abajo. Borra o mueve todos los archivos con tiff en el nombre que no sean los que corresponden a las imágenes de NDVI máximo anual. 
+     - Si al ejecutar la línea en la que creamos el objeto *lista_imagenes* obtienes un archivo con valor *NULL* en R tienes que hacer lo siguiente: cambia las comillas simples de la línea de código que empieza por "lista_imagenes" por comillas dobles (las que hay en la tecla 2). Además, borra el asterisco que hay en dicha línea de código. Luego ejecuta la línea de nuevo. Deberás obtener el objeto *lista_imagenes* pero ahora contendrá varios elementos (21 es lo que debe de tener). Esto se debe a que en algunas versiones de Windows R no entiende bien las comillas simples.
      - Luego usamos la función *slack* para crear una pila de archivos con los tif anteriores. Se crea un tipo de objeto llamado [*RasterStack*](https://www.rdocumentation.org/packages/raster/versions/3.0-12/topics/stack). Es una colección de capas raster que tienen la misma extensión y resolución espacial. 
      - Después, usamos la función  _Brick_. Un [Brick](https://www.rdocumentation.org/packages/raster/versions/2.9-23/topics/brick) es una capa multibanda. Es similar al *stack* anterior, pero se procesa más rápidamente en la memoria. 
      - La función *plot* permite representar gráficamente cada una de las bandas contenidas en el objeto creado anteriormente. 
@@ -231,9 +231,9 @@ Si no has conseguido hacer lo que se describe en el guión, no te preocupes. [Aq
 + Grupo "escala mensual":
   + ndvi_2000_mensual.tif : Imagen que contiene el valor máximo de NDVI para cada píxel en cada uno de los meses del año 2000. Esta información será útil para obtener gráficas que representan la estacionalidad del NDVI para el año en cuestión.
 
-Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir necesitas la capa vectorial que contiene los lugares que "visitaremos" en la siguiente sección. Descárgala aquí y ponla en el proyecto con el que has estado trabajando en toda la clase. 
+Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir necesitas la capa vectorial que contiene los lugares que "visitaremos" en la siguiente sección. Descárgala [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/zonas_interes.zip) y ponla en el proyecto con el que has estado trabajando en toda la clase. 
 
-
+También puede ser que no te haya dado tiempo a terminar la práctica en clase y que no tengas ordenador con el software necesario en casa. En ese caso puedes usar los escritorios virtuales de la UCO (que ya funcionan de nuevo). Puedes acceder a dichos escritorios en [esta](http://www.uco.es/servicios/informatica/novedades/185-acceso-remoto-a-los-escritorios) URL. Sigue las instrucciones que te dan en la página anterior. 
 
 ## Discusión
 
@@ -263,5 +263,20 @@ Verás que cada polígono de la capa de zonas de interés tiene un número. Cada
 
    
 
+## Ejercicio
 
+
+
+TODAVÍA NO ESTÁ LISTO. EN BREVE LO TENDRÉIS
+
+
+
++ Tipo de vegetación:
+  + ¿bosque, matorral, pasto?
+  + ¿caducifolio o perennifolio?
++ Funcionamiento:
+  + Fíjate en la gráfica interanual y en el valor de la tendencia.
+  + Los cambios que observas:
+    + ¿se deben a cambios en el funcionamiento o también a cambios estructurales?
+    + ¿qué crees que ha pasado en esta zona? Da una explicación que sea coherente con la información que obtienes del satélite y de las ortofotografías. 
 
