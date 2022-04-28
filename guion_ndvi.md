@@ -168,6 +168,7 @@ writeRaster(ndvis, filename="ndvi_2000_2021.tif", format="GTiff", overwrite=TRUE
 ![graph](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/main/imagenes/graph.png)
 
 
+
 ### Sección 3: Cuantificación de la tendencia en la serie de NDVI anual: escala interanual
 
 En las gráficas anteriores vemos cómo en algunos píxeles hay una tendencia hacia más NDVI y en otros hacia menos. Esto puede deberse a varios factores ambientales: incendios (caídas bruscas del NDVI), tratamientos forestales de reducción de la densidad (caídas de NDVI) o regeneración natural de la vegetación (aumento sostenido del NDVI). Es posible cuantificar esta tendencia usando un test estadístico llamado Mann Kendall. Este test analiza los valores anuales de NDVI y cuantifica si se ajusta a una línea ascendente o descendente. Si la tendencia es hacia más NDVI, el valor del test será positivo (como máximo de 1). Si la tendencia es negativa, el test arrojará un valor número negativo (mínimo de -1). Procederemos de la siguiente forma:
@@ -235,6 +236,8 @@ Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir neces
 
 También puede ser que no te haya dado tiempo a terminar la práctica en clase y que no tengas ordenador con el software necesario en casa. En ese caso puedes usar los escritorios virtuales de la UCO (que ya funcionan de nuevo). Puedes acceder a dichos escritorios en [esta](http://www.uco.es/servicios/informatica/novedades/185-acceso-remoto-a-los-escritorios) URL. Sigue las instrucciones que te dan en la página anterior. 
 
+
+
 ## Discusión
 
 Una vez obtenidos los resultados, los analizaremos usando para ello el conocimiento ya adquirido sobre el concepto de producción primaria. 
@@ -245,38 +248,60 @@ Verás que cada polígono de la capa de zonas de interés tiene un número. Cada
 
 + Escala bidecadal:
 
-  + Punto 1: Matorral de media montaña. 
-  + Punto 2: Pinares de repoblación de media montaña.
-  + Punto 3: Matorral leñoso de alta montaña.
-  + Punto 4: Pastizal psicoxerófilo de alta montaña.
-  + Punto 5: Borreguil de alta montaña.
+  + Distribución espacial de la biomasa fotosintéticamente activa.
+    + Punto 1: Matorral de media montaña. Observamos valores intermedios de NDVI.
+    + Punto 2: Pinares de repoblación de media montaña. NDVI más alto que en el punto anterior.
+    + Punto 3: Matorral leñoso de alta montaña. NDVI más bajo que en los dos anteriores. ¿Por qué ocurre esto?
+    + Punto 4: Pastizal psicoxerófilo de alta montaña. Aquí se alcanzan valores muy bajos de NDVI. ¿Por qué?
+    + Punto 5: Borreguil de alta montaña. Estas formaciones se distribuyen cerca de los ríos de alta montaña. Muchas veces son promovidos por el ser humano para la creación de pastos. Su NDVI es alto para la zona en la que se encuentran.
 
 + Escala interanual:
 
-  + Punto 6: Matorral de media montaña.
-  + Punto 7: Pinares de repoblación.
-  + Punto 8: Encinares y robledales.
+  + Punto 6: Matorral de media montaña. Observa la gráfica interanual. ¿Por qué tiene esa forma? ¿qué pudo haber pasado entre 2004 y 2005 para explicar la gran bajada en el NDVI? ¿Qué ocurre después de 2005?
+  + Punto 7: Pinares de repoblación. ¿Es parecido el patrón al observado en el punto anterior?
+  + Punto 8: Encinares y robledales. ¿Qué patrón hay en esta mancha de vegetación?
 
 + Escala intraanual:
 
-  + Punto 9: Robledales y pinares. 
+  + Punto 9: Robledales y pinares. La zona situada más al oeste está cubierta de robledales de *Quercus pyrenaica*. Hacia el este hay un pinar de repoblación. ¿En qué se diferencian las gráficas intraanuales (estacionales) de estas dos formaciones? ¿A qué crees que se deben tales diferencias?
 
    
 
 ## Ejercicio
 
+Para esta práctica tienes que completar un ejercicio parecido a lo que hemos hecho en la discusión que hay más arriba. Descarga este fichero de formas y despliégalo en el proyecto que ya tienes elaborado. Verás que solo contiene un polígono. Acércate a dicho polígono y trata de construir una historia que explique el comportamiento de ese ecosistema en los últimos 21 años. Para ello deberás utilizar la información de las imágenes de satélite que hemos elaborado y también las ortofotos de distintas fechas.
 
-
-TODAVÍA NO ESTÁ LISTO. EN BREVE LO TENDRÉIS
-
-
+A modo de guía, puedes reflexionar sobre las siguientes preguntas:
 
 + Tipo de vegetación:
   + ¿bosque, matorral, pasto?
   + ¿caducifolio o perennifolio?
-+ Funcionamiento:
++ Funcionamiento y estructura:
   + Fíjate en la gráfica interanual y en el valor de la tendencia.
   + Los cambios que observas:
     + ¿se deben a cambios en el funcionamiento o también a cambios estructurales?
     + ¿qué crees que ha pasado en esta zona? Da una explicación que sea coherente con la información que obtienes del satélite y de las ortofotografías. 
 
+Plasma tu "historia" en un documento de texto que contenga también imágenes con las gráficas que generes y también los mapas que consideres oportunos. Recuerda que puedes usar las ortofotos de distintas fechas para analizar si el cambio en el funcionamiento está alineado o no con los cambios ena estructura. 
+
+La imagen siguiente muestra en 3D el aspecto de la zona propuesta:
+
+![ejercicio](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/raw/main/imagenes/ejercicio.png)
+
+
+
+
+
+## Evaluación de la sesión según los estudiantes
+
+Aquí puedes ver los resultados que, por ahora, arroja [esta](https://docs.google.com/forms/d/e/1FAIpQLScbCKaNkzzjV5bH0yek41FO-KS7LtLhT_ilITS_ZR0Z2XJyCA/viewform?usp=sf_link) encuesta sobre grado de satisfacción de los objetivos planteados. Por favor, rellénala si no lo has hecho ya. Se tardan 10 segundos y sus resultados son de gran utilidad para mejorar los contenidos cada año. Gracias.
+
+
+
+<img src="https://github.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/raw/2021_2022/imagenes/cumplimiento_objetivos.png" alt="image" style="zoom:50%;" />
+
+<img src="https://github.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/raw/2021_2022/imagenes/desempenio_profesor.png" alt="image" style="zoom:50%;" />
+
+
+
+Además, algunos estudiantes hicieron los siguientes comentarios:
