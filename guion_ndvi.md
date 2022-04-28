@@ -286,7 +286,7 @@ Plasma tu "historia" en un documento de texto que contenga también imágenes co
 
 La imagen siguiente muestra en 3D el aspecto de la zona propuesta:
 
-![ejercicio](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/raw/main/imagenes/ejercicio.png)
+![ejercicio](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/main/imagenes/ejercicio.png)
 
 Sube tu ejercicio (en formato word o similar) a [este](https://www.turnitin.com/t_submit.asp?r=87.1371904811905&svr=43&lang=es&aid=120543054) enlace de Turnitin. Será evaluado siguiendo los siguientes criterios:
 
