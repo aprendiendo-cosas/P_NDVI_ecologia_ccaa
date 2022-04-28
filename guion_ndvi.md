@@ -41,19 +41,17 @@ De manera más concreta, durante esta sesión trabajaremos con imágenes de sat�
   + Cuantificar la tendencia de la serie (de 2000 a 2020) de NDVI observada la zona de estudio. Analizaremos si cada punto de 30x30 m ha experimentado en el periodo analizado, un aumento de NDVI, un descenso o si se ha mantenido estable. 
 + *Escala intraanual*: Generaremos una gráfica que mostrará cómo cambia el NDVI (por tanto la producción primaria) en todo el territorio a escala mensual (intraanual) en el año 2000. Esta gráfica nos dará información sobre cómo cambia la producción primaria dentro de un año. Es decir, podremos observar procesos ecológicos como la fenología. Además, analizaremos cómo cambia la curva anual de NDVI en un gradiente altitudinal.
 
-[Esta](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2020-2021/presentaciones/teledeteccion.ppt) presentación describe con más detalle los conceptos teóricos que sustentan esta práctica. Y la siguiente figura muestra el resumen de las tareas a abordar.
+[Esta](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/presentaciones/teledeteccion.ppt) presentación describe con más detalle los conceptos teóricos que sustentan esta práctica. Y la siguiente figura muestra el resumen de las tareas a abordar.
 
 
 
-![resumen](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/2020-2021/imagenes/resumen.png)
+![resumen](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/main/imagenes/resumen.png)
 
 
 
 
 
 ## Organización general de la práctica
-
-
 
 Esta práctica se desarrollará de forma diferente a como hemos trabajado con las anteriores. Ya llevamos varias sesiones en las que habéis trabajado con SIG y con R. Así que creo que ha llegado el momento de que pongáis en práctica lo que habéis aprendido. Por ello, durante esta sesión yo no os acompañaré en la ejecución de las acciones de manejo de datos. En las siguientes secciones tenéis información detallada sobre los pasos que debéis dar. Tendréis que trabajar de forma más o menos autónoma. Esto ocurrirá en la primera parte de la práctica (1.5 horas). Durante la segunda mitad de la sesión trabajaremos juntos en la interpretación ecológica de los resultados obtenidos. De forma más sintética esta práctica tendrá la siguiente estructura:
 
@@ -97,7 +95,7 @@ En primer lugar analizaremos cómo el índice de vegetación es útil para carac
 2. Ahora carga todas las imágenes QGIS. Puedes arrastrar los archivos tif a QGIS o seleccionar "cargar capa raster" del menú "capa". Verás muchas capas en una paleta de colores de escala de grises. Puedes cambiar la paleta a alguna imagen para ver mejor cómo se distribuye el NDVI máximo anual. 
 4. A continuación calcularemos el valor promedio de cada año para cada píxel. Abre la calculadora raster del menú "raster". Ahí debes de ir seleccionando todas las capas haciendo click sobre ellas y sumándolas. Luego pon un paréntesis entre todas las capas y divídelo todo por el número de capas. Así obtendremos el valor promedio. Guarda la imagen en tu carpeta y llámale "ndvi_promedio_2000_2020.tif".
 4. Acabado el cálculo, se cargará la imagen automáticamente. Una vez que esto ocurra, represéntala con la paleta de colores "greens". Como siempre: doble click sobre la capa, pestaña de estilo o simbología (dependiendo de tu versión de QGIS), "single band pseudocolor". Ponla también algo transparente (50%) para que se vea la ortofoto de fondo.
-4. Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/2021-2022/geoinfo/ndvi_promedio_2000_2020.tif) puedes descargar el resultado que deberías haber obtenido. 
+4. Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://drive.google.com/file/d/1LegawNBgWXDEsIg9KCdKJsFi6C_tsauW/view?usp=sharing) puedes descargar el resultado que deberías haber obtenido. 
 
 
 
@@ -146,7 +144,7 @@ library(Kendall)
  
 
  ```r
-## Empaquetamos todas las imagenes tiff generadas por GEE en una unica imagen multibanda
+## Empaquetamos todas las imagenes tiff en una unica imagen multibanda
 lista_imagenes <- list.files(pattern='*.tif', full.names=TRUE)
 ndvis <- brick(stack(lista_imagenes))
 plot(ndvis)
@@ -211,30 +209,59 @@ writeRaster(kendal_result$tau, filename="tau.tif", format="GTiff", overwrite=TRU
 
 En esta última parte de la práctica cambiaremos de escala. Ahora, en lugar de analizar los valores de NDVI de cada año, usaremos los valores promedios de cada mes de un año concreto: 2000. Así, obtendremos una gráfica que muestra la estacionalidad (cambios de la producción primaria a lo largo del año). Procederemos de la siguiente manera:
 
-1. Descarga [esta](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/2021-2022/geoinfo/ndvi_2000_mensual.tif) (**ndvi_2000_mensual.tif**) imagen y cárgala en QGIS. Verás que QGIS la representa con una gama de colores muy peculiar. Eso se debe a que tiene muchas bandas. Concretamente 12. Una por mes. La banda 1 es enero, la 2, febrero y así sucesivamente. En cada banda hay información del valor máximo de NDVI en cada píxel para el mes en cuestión. También es posible que, dependiendo de la versión de QGIS que estés utilizando, se represente esta capa como totalmente en blanco. No te preocupes si ocurre eso. Todo está bien. 
+1. Descarga [esta](https://drive.google.com/file/d/1fdeZN1gRxv4z7Okt5oP2YlGq2Be61q5_/view?usp=sharing) (**ndvi_2000_mensual.tif**) imagen y cárgala en QGIS. Verás que QGIS la representa con una gama de colores muy peculiar. Eso se debe a que tiene muchas bandas. Concretamente 12. Una por mes. La banda 1 es enero, la 2, febrero y así sucesivamente. En cada banda hay información del valor máximo de NDVI en cada píxel para el mes en cuestión. También es posible que, dependiendo de la versión de QGIS que estés utilizando, se represente esta capa como totalmente en blanco. No te preocupes si ocurre eso. Todo está bien. 
 2. Selecciona la capa **_ndvi_2000_mensual.tif_** en QGIS.
 3. Haz click en el botón del plugin que hemos usado antes para generar la gráfica de toda la serie temporal. Dale al botón "add layer" para añadir a la herramienta la capa que queremos.
 4. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los meses. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "mes". Esto solo funciona en las versiones recientes de QGIS, no en la que usamos nosotros (2.16). En el caso de la versión 2.6 hacemos lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada mes separado por punto y coma, así: 1;2;3; etc.  
-5. Observa la imagen que ves abajo y haz zoom a las zonas marcadas como 1 y 2 cuando el profesor diga.
+5. Haz click en cualquier parte del mapa y verás una gráfica de la distribución estacional del NDVI en el año 2000.
 
 
 
-![sierranevada](https://github.com/aprendiendo-cosas/P_NDVI_UCO_ecologia_II/raw/2021-2022/imagenes/sierranevada.png)
+## Salvavidas
 
+Si no has conseguido hacer lo que se describe en el guión, no te preocupes. [Aquí](https://drive.google.com/file/d/1FennOVlrU6fF8hdyYcYYFy3fXio_Wde-/view?usp=sharing) puedes descargar un zip con toda la información que necesitas para la discusión ecológica. Dicho zip contiene la siguiente información:
 
++ Proyecto de QGIS (resultados_ndvi_Sierra_Nevada.qgz) que deberás abrir porque en él están referenciados los siguientes conjuntos de datos.
++ Capa vectorial con las zonas de interés que estudiaremos en la siguiente sección (zonas_interes_NDVI.shp). Contiene una serie de polígonos en los que se dan situaciones relevantes que podremos analizar con una perspectiva ecológica.
++ Grupo "escala bidecadal":
+  + ndvi_promedio_2000_2020.tif: Imagen que contiene el valor promedio del NDVI máximo anual en toda la serie temporal. Nos permitirá distinguir formaciones vegetales con diferente cantidad de biomasa fotosintéticamente activa.
++ Grupo "escala interanual":
+  + tau_2000_2020.tif: Capa que contien el valor del estadístico tau para cada píxel de Sierra Nevada. Este valor da idea de la intensidad de la tendencia de la serie de NDVI. Cuanto más cercano a 1, más intensa y positiva es la tendencia. Es decir, hay una tendencia hacia tener más NDVI.
+  + ndvi_2000_2020_anual.tif: Imagen que contiene 21 bandas (1 por año) y que nos permitirá construir la gráfica de la serie temporal analizada. Su estudio nos ayudará a entender la "historia" que hay detrás de cada uno de los puntos analizados en la discusión.
++ Grupo "escala mensual":
+  + ndvi_2000_mensual.tif : Imagen que contiene el valor máximo de NDVI para cada píxel en cada uno de los meses del año 2000. Esta información será útil para obtener gráficas que representan la estacionalidad del NDVI para el año en cuestión.
 
-6. Genera una gráfica para las formaciones que hay en el margen oeste del valle que hay en la zona 1. Copia la gráfica y la pegas a un archivo de word. 
+Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir necesitas la capa vectorial que contiene los lugares que "visitaremos" en la siguiente sección. Descárgala aquí y ponla en el proyecto con el que has estado trabajando en toda la clase. 
 
 
 
 ## Discusión
+
 Una vez obtenidos los resultados, los analizaremos usando para ello el conocimiento ya adquirido sobre el concepto de producción primaria. 
 
-"Iremos" a varios lugares de Sierra Nevada y aprenderemos algo del funcionamiento de sus ecosistemas forestales mediante el análisis de toda la información anterior.
+"Iremos" a varios lugares de Sierra Nevada y aprenderemos algo del funcionamiento de sus ecosistemas forestales mediante el análisis de toda la información anterior. 
 
-Si has conseguido hacer todos los pasos anteriores, descarga esta capa que contiene los lugares que visitaremos. Pon esa capa en tu proyecto de QGIS y espera instrucciones...
+Verás que cada polígono de la capa de zonas de interés tiene un número. Cada uno nos permite identificar distintos elementos interesantes a las tres escalas de trabajo que hemos experimentado:
 
-Si no lo has conseguido, descarga este archivo zip que contiene toda la información ya compilada en un proyecto de QGIS. Descomprime el archivo y ponlo en una carpeta diferente a la que has usado para trabajar. Una vez hecho eso, abre el proyecto de QGIS denominado "NDVI_Sierra_Nevada.qgz". Luego, espera instrucciones...
++ Escala bidecadal:
+
+  + Punto 1: Matorral de media montaña. 
+  + Punto 2: Pinares de repoblación de media montaña.
+  + Punto 3: Matorral leñoso de alta montaña.
+  + Punto 4: Pastizal psicoxerófilo de alta montaña.
+  + Punto 5: Borreguil de alta montaña.
+
++ Escala interanual:
+
+  + Punto 6: Matorral de media montaña.
+  + Punto 7: Pinares de repoblación.
+  + Punto 8: Encinares y robledales.
+
++ Escala intraanual:
+
+  + Punto 9: Robledales y pinares. 
+
+   
 
 
 
