@@ -288,6 +288,16 @@ La imagen siguiente muestra en 3D el aspecto de la zona propuesta:
 
 ![ejercicio](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/raw/main/imagenes/ejercicio.png)
 
+Sube tu ejercicio (en formato word o similar) a [este](https://www.turnitin.com/t_submit.asp?r=87.1371904811905&svr=43&lang=es&aid=120543054) enlace de Turnitin. Será evaluado siguiendo los siguientes criterios:
+
+
+
+| No entrega                                                   | Insuficiente                         | Aceptable                                                    | Bien                                                         | Buen trabajo                                                 | Excelente                                                    |
+| ------------------------------------------------------------ | ------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Manejo herramientas. Se evalúa tu manejo de las herramientas informáticas que hemos usado en la práctica. Esto se hace en función de la calidad de la información que aportas." | No entrega nada o es incomprensible. | Las gráficas y mapas que aportas son manifiestamente mejorables | Los mapas y gráficas son significativos, pero están a una escala insuficiente o no muestran bien los procesos ecológicos descritos. | Buena composición de los mapas y gráficas.                   | Has maquetado de manera muy elegante el material suministrado. Los mapas tienen su escala y la gama de colores es explicativa. |
+| Historia eoclógica. Se evalua si has contestado de manera razonada a la pregunta sobre la historia de la zona propuesta. No se trata de que aciertes o no, sino de que lo que cuentas sea plausible." | No entrega nada o es incomprensible. | Tu respuesta no tiene ningún sentido ecológico.              | Has aportado una respuesta pobremente justificada. Tus argumentos no se sostienen. | Además de responder de manera lógica, has sustentado tus argumentos con conceptos ecológicos. | Has conectado la pregunta con otros conceptos que hemos visto en la asignatura. Muestras gran capacidad de transferir conocimiento de un ámbito a otro. |
+| Legibilidad. Hace referencia a lo bien escrito que está el texto y a su legibilidad" | No entrega nada o es incomprensible. | Apenas entiendo lo que has escrito                           | He tenido que reinterpretar casi cada frase para entenderlo  | Se entiende bien todo, pero el texto no es fluido            | Muy buena redacción. La lectura fluye fácilmente, cual novela. |
+
 
 
 
@@ -298,9 +308,9 @@ Aquí puedes ver los resultados que, por ahora, arroja [esta](https://docs.googl
 
 
 
-<img src="https://github.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/raw/2021_2022/imagenes/cumplimiento_objetivos.png" alt="image" style="zoom:50%;" />
+<img src="https://github.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/raw/main/imagenes/cumplimiento_objetivos.png" alt="image" style="zoom:50%;" />
 
-<img src="https://github.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/raw/2021_2022/imagenes/desempenio_profesor.png" alt="image" style="zoom:50%;" />
+<img src="https://github.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/raw/main/imagenes/desempenio_profesor.png" alt="image" style="zoom:50%;" />
 
 
 
