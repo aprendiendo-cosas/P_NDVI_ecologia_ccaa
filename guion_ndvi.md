@@ -269,13 +269,13 @@ Verás que cada polígono de la capa de zonas de interés tiene un número. Cada
 
 ## Ejercicio
 
-Para esta práctica tienes que completar un ejercicio parecido a lo que hemos hecho en la discusión que hay más arriba. Descarga este fichero de formas y despliégalo en el proyecto que ya tienes elaborado. Verás que solo contiene un polígono. Acércate a dicho polígono y trata de construir una historia que explique el comportamiento de ese ecosistema en los últimos 21 años. Para ello deberás utilizar la información de las imágenes de satélite que hemos elaborado y también las ortofotos de distintas fechas.
+Para esta práctica tienes que completar un ejercicio parecido a lo que hemos hecho en la discusión que hay más arriba. Descarga [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/zonas_interes.zip) fichero de formas y despliégalo en el proyecto que ya tienes elaborado. Verás que solo contiene un polígono. Acércate a dicho polígono y trata de construir una historia que explique el comportamiento de ese ecosistema en los últimos 21 años. Para ello deberás utilizar la información de las imágenes de satélite que hemos elaborado y también las ortofotos de distintas fechas.
 
 A modo de guía, puedes reflexionar sobre las siguientes preguntas:
 
 + Tipo de vegetación:
-  + ¿bosque, matorral, pasto?
-  + ¿caducifolio o perennifolio?
+  + ¿se trata de un bosque, matorral o pasto?
+  + Si es bosque, ¿caducifolio o perennifolio?
 + Funcionamiento y estructura:
   + Fíjate en la gráfica interanual y en el valor de la tendencia.
   + Los cambios que observas:
@@ -286,7 +286,7 @@ Plasma tu "historia" en un documento de texto que contenga también imágenes co
 
 La imagen siguiente muestra en 3D el aspecto de la zona propuesta:
 
-![ejercicio](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/main/imagenes/ejercicio.png)
+<img src="https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/main/imagenes/ejercicio.png" alt="ejercicio" style="zoom: 33%;" />
 
 Sube tu ejercicio (en formato word o similar) a [este](https://www.turnitin.com/t_submit.asp?r=87.1371904811905&svr=43&lang=es&aid=120543054) enlace de Turnitin. Será evaluado siguiendo los siguientes criterios:
 
