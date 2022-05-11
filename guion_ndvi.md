@@ -288,7 +288,7 @@ Verás que cada polígono de la capa de zonas de interés tiene un número. Cada
 
 ## Ejercicio
 
-Para esta práctica tienes que completar un ejercicio parecido a lo que hemos hecho en la discusión que hay más arriba. Descarga [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/zonas_interes.zip) fichero de formas y despliégalo en el proyecto que ya tienes elaborado. Verás que solo contiene un polígono. Acércate a dicho polígono y trata de construir una historia que explique el comportamiento de ese ecosistema en los últimos 21 años. Para ello deberás utilizar la información de las imágenes de satélite que hemos elaborado y también las ortofotos de distintas fechas.
+Para esta práctica tienes que completar un ejercicio parecido a lo que hemos hecho en la discusión que hay más arriba. Descarga [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/ejercicio.zip) fichero de formas y despliégalo en el proyecto que ya tienes elaborado. Verás que solo contiene un polígono. Acércate a dicho polígono y trata de construir una historia que explique el comportamiento de ese ecosistema en los últimos 21 años. Para ello deberás utilizar la información de las imágenes de satélite que hemos elaborado y también las ortofotos de distintas fechas.
 
 A modo de guía, puedes reflexionar sobre las siguientes preguntas:
 
