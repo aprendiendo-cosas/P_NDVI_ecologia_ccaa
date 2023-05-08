@@ -45,7 +45,7 @@ De manera más concreta, durante esta sesión trabajaremos con imágenes de sat�
 
 
 
-![resumen](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/2021-2022/imagenes/resumen.png)
+![resumen](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/main/imagenes/resumen.png)
 
 
 
