@@ -29,7 +29,7 @@ Estos objetivos se abordarán usando como contexto espacial el espacio protegido
 
 ## Introducción: teledetección y ecología
 
-En esta práctica trabajaremos en un aspecto muy importante en los ecosistemas terrestres: la producción primaria. Cuantificaremos cómo se lleva a cabo el proceso de transformación de la materia inorgánica en orgánica a través de la fotosíntesis. Esto quiere decir que para mejorar el proceso de aprendizaje es necesario que conozcas los conceptos teóricos que veremos en el tema sobre producción primaria. Como este curso vemos la práctica antes del tema teórico, te sugiero que eches un vistazo a [este](https://rawcdn.githack.com/aprendiendo-cosas/Te_ecosistemas_prod_primaria_ecologia_ccaa/2021-2022/guion_produccion_primaria.html) material. Para lograr los objetivos anteriores usaremos imágenes procedentes de sensores alojados a bordo de satélites que orbitan alrededor de la Tierra. 
+En esta práctica trabajaremos en un aspecto muy importante en los ecosistemas terrestres: la producción primaria. Cuantificaremos cómo se lleva a cabo el proceso de transformación de la materia inorgánica en orgánica a través de la fotosíntesis. Esto quiere decir que para mejorar el proceso de aprendizaje es necesario que conozcas los conceptos teóricos que veremos en el tema sobre producción primaria.  Para lograr los objetivos anteriores usaremos imágenes procedentes de sensores alojados a bordo de satélites que orbitan alrededor de la Tierra. 
 
 Los satélites pueden detectar y cuantificar la actividad fotosintética porque son sensibles a las longitudes de onda que utilizan las plantas cuando para generar materia orgánica. Cuando una planta está viva y haciendo la fotosíntesis tiene una "firma espectral" determinada. Cuando está muerta o no hace la fotosíntesis tiene otra diferente. Esto se debe a que cuando están haciendo la fotosíntesis son capaces de absorber ciertas bandas del espectro electromagnético (concretamente el rojo). Teniendo en cuenta esto es posible construir índices que cuantifican cómo de intensa es la fotosíntesis en un lugar determinado y en un tiempo concreto. En esta práctica aplicaremos uno de los índices más comunmente utilizados, el NDVI: [Normalized difference vegetation index.](https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index) En concreto en esta ocasión usaremos datos suministrados por un satélite llamado Landsat 7, que pasa por cada punto de la Tierra cada 16 días. Los sensores que tiene este satélite permiten calcular el NDVI en cada pasada. [Landsat 7](https://landsat.gsfc.nasa.gov/landsat-7/ ) se lanzó en 2000 y sigue enviando información en la actualidad. La resolución espacial de esta información es de 30 metros. 
 
@@ -58,7 +58,7 @@ Esta práctica se desarrollará de forma diferente a como hemos trabajado con la
 + Primera parte (1.5 horas). Los estudiantes desarrollan el guión y generan los resultados que deben de almacenarse de manera lógica y coherente en una carpeta de su elección (fuera del escritorio, por favor). Si en esa parte surgen dudas, procederéis dando de forma secuencial los siguientes pasos:
   1. Intenta resolver la duda tú mismo/misma: lee bien el error que obtienes y trata de descifrar a qué se debe y cómo puedes resolverlo. Esto te ayudará a afianzar los conocimientos que tienes. Aprendemos más (y nos sentimos mejor) cuando resolvemos nuestras propias dudas. Si no lo consigues, ve al siguiente paso:
   2. Pregunta a tus compañeros: Intenta trasladar a tus compañeros el problema que has tenido. Trata de explicarles la situación lo mejor posible para que puedan ayudarte. Está comprobado que las personas que aprenden a la vez pueden ayudarse mejor que si interactúan dos personas con ritmos de aprendizajes diferentes. Yo aprendí esto hace años y seguramente lo explico peor que tus compañeros que lo acaban de aprender. Además, en este caso interactuáis con vuestros compañeros, que siempre es bueno. Si no conseguís resolver el problema, id al siguiente paso:
-  3. Pregunta al profesor (yo): Trata de explicar bien tu problema. Cuéntame qué has intentado para resolverlo y por qué crees que tus intentos anteriores han fallado. De esta forma entrenas tu capacidad discursiva y seguramente eso te ayudará a resolver el problema. 
+  3. Pregunta al profesor: Trata de explicar bien tu problema. Cuéntame qué has intentado para resolverlo y por qué crees que tus intentos anteriores han fallado. De esta forma entrenas tu capacidad discursiva y seguramente eso te ayudará a resolver el problema. 
 + Segunda parte (1.5 horas): Cuando todos tengamos los procedimientos terminados prepararemos un proyecto de QGIS y sobre él "visitaremos" varios lugares de Sierra Nevada para analizar cómo cambia la actividad fotosintética en las distintas escalas espaciales y temporales descritas en la sección anterior.
 
 
@@ -103,22 +103,22 @@ Las siguientes secciones contienen información sobre cómo completar toda la pr
 
    
 
+## Software necesario para hacer la práctica
+
+Usaremos las siguientes herramientas. Todas ellas están instaladas en las aulas de la UCO. Pero si quieres usar tu ordenador para hacer la práctica tienes que instalarlas:
+
++ QGIS. [Aquí](https://www.qgis.org/en/site/forusers/download.html) puedes descargar distintas versiones de QGIS para Windows y para Mac. 
+
++ R y Rstudio.
+
+  + Primero debes de instalar R. [https://cran.rstudio.com/](https://cran.rstudio.com/) tienes el enlace de descarga. Sigue las instrucciones en función del sistema operativo que tengas en tu ordenador. 
+  + Rstudio. En [esta](https://posit.co/download/rstudio-desktop/) página selecciona la opción "Download Rstudio Desktop for..." en función del sistema operativo de tu ordenador.
 
 
-### Sección 1: NDVI promedio de toda la serie temporal: Cantidad de biomasa fotosintéticamente activa
-
-En primer lugar analizaremos cómo el índice de vegetación es útil para caracterizar la cantidad de biomasa que hay en un lugar determinado. Para ello calcularemos el valor promedio del NDVI máximo anual para todos los píxeles de la zona de estudio. Haremos lo siguiente:
-
-1. Asegúrate de haber completado los dos pasos de la sección anterior.
-2. Ahora carga todas las imágenes QGIS. Puedes arrastrar los archivos tif a QGIS o seleccionar "cargar capa raster" del menú "capa". Verás muchas capas en una paleta de colores de escala de grises. Puedes cambiar la paleta a alguna imagen para ver mejor cómo se distribuye el NDVI máximo anual. 
-4. A continuación calcularemos el valor promedio de cada año para cada píxel. Abre la calculadora raster del menú "raster". Ahí debes de ir seleccionando todas las capas haciendo click sobre ellas y sumándolas. Luego pon un paréntesis entre todas las capas y divídelo todo por el número de capas. Así obtendremos el valor promedio. Guarda la imagen en tu carpeta y llámale "ndvi_promedio_2000_2020.tif".
-4. Acabado el cálculo, se cargará la imagen automáticamente. Una vez que esto ocurra, represéntala con la paleta de colores "greens". Como siempre: doble click sobre la capa, pestaña de estilo o simbología (dependiendo de tu versión de QGIS), "single band pseudocolor". Ponla también algo transparente (50%) para que se vea la ortofoto de fondo.
-4. Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://drive.google.com/file/d/1LegawNBgWXDEsIg9KCdKJsFi6C_tsauW/view?usp=sharing) puedes descargar el resultado que deberías haber obtenido. 
 
 
 
-
-### Sección 2: Serie temporal de NDVI anual: escala interanual
+### Sección 1: Serie temporal de NDVI anual: escala interanual
 
 Este flujo de trabajo está también explicado en [este](https://youtu.be/22dlKcNa_SI) vídeo. La idea es generar una gráfica que muestre los valores máximos anuales de NDVI en cada píxel. Esto nos permitirá conocer cómo cambia el NDVI a lo largo de los 21 años que estamos estudiando. Veremos el impacto de las sequías o de los incendios forestales, por ejemplo. A lo largo de la sección verás una explicación de la función que queremos realizar y luego unas líneas de código que la ejecutan. Debes de leer el texto explicativo, tratar de entenderlo y luego ejecutar una a una las líneas de código que hay debajo. 
 
@@ -188,7 +188,7 @@ writeRaster(ndvis, filename="ndvi_2000_2020.tif", format="GTiff", overwrite=TRUE
 
 
 
-### Sección 3: Cuantificación de la tendencia en la serie de NDVI anual: escala interanual
+### Sección 2: Cuantificación de la tendencia en la serie de NDVI anual: escala interanual
 
 En las gráficas anteriores vemos cómo en algunos píxeles hay una tendencia hacia más NDVI y en otros hacia menos. Esto puede deberse a varios factores ambientales: incendios (caídas bruscas del NDVI), tratamientos forestales de reducción de la densidad (caídas de NDVI) o regeneración natural de la vegetación (aumento sostenido del NDVI). Es posible cuantificar esta tendencia usando un test estadístico llamado Mann Kendall. Este test analiza los valores anuales de NDVI y cuantifica si se ajusta a una línea ascendente o descendente. Si la tendencia es hacia más NDVI, el valor del test será positivo (como máximo de 1). Si la tendencia es negativa, el test arrojará un valor número negativo (mínimo de -1). Procederemos de la siguiente forma:
 
@@ -225,6 +225,18 @@ writeRaster(kendal_result$tau, filename="tau.tif", format="GTiff", overwrite=TRU
 
 
 
+### Sección 3: NDVI promedio de toda la serie temporal: Cantidad de biomasa fotosintéticamente activa
+
+En primer lugar analizaremos cómo el índice de vegetación es útil para caracterizar la cantidad de biomasa que hay en un lugar determinado. Para ello calcularemos el valor promedio del NDVI máximo anual para todos los píxeles de la zona de estudio. Haremos lo siguiente:
+
+1. Asegúrate de haber completado los dos pasos de la sección anterior.
+2. Ahora carga todas las imágenes QGIS. Puedes arrastrar los archivos tif a QGIS o seleccionar "cargar capa raster" del menú "capa". Verás muchas capas en una paleta de colores de escala de grises. Puedes cambiar la paleta a alguna imagen para ver mejor cómo se distribuye el NDVI máximo anual. 
+3. A continuación calcularemos el valor promedio de cada año para cada píxel. Abre la calculadora raster del menú "raster". Ahí debes de ir seleccionando todas las capas haciendo click sobre ellas y sumándolas. Luego pon un paréntesis entre todas las capas y divídelo todo por el número de capas. Así obtendremos el valor promedio. Guarda la imagen en tu carpeta y llámale "ndvi_promedio_2000_2020.tif".
+4. Acabado el cálculo, se cargará la imagen automáticamente. Una vez que esto ocurra, represéntala con la paleta de colores "greens". Como siempre: doble click sobre la capa, pestaña de estilo o simbología (dependiendo de tu versión de QGIS), "single band pseudocolor". Ponla también algo transparente (50%) para que se vea la ortofoto de fondo.
+5. Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://drive.google.com/file/d/1LegawNBgWXDEsIg9KCdKJsFi6C_tsauW/view?usp=sharing) puedes descargar el resultado que deberías haber obtenido. 
+
+
+
 ### Sección 4: Estacionalidad en el NDVI: escala intraanual
 
 En esta última parte de la práctica cambiaremos de escala. Ahora, en lugar de analizar los valores de NDVI de cada año, usaremos los valores promedios de cada mes de un año concreto: 2000. Así, obtendremos una gráfica que muestra la estacionalidad (cambios de la producción primaria a lo largo del año). Procederemos de la siguiente manera:
@@ -233,7 +245,20 @@ En esta última parte de la práctica cambiaremos de escala. Ahora, en lugar de 
 2. Selecciona la capa **_ndvi_2000_mensual.tif_** en QGIS.
 3. Haz click en el botón del plugin que hemos usado antes para generar la gráfica de toda la serie temporal. Dale al botón "add layer" para añadir a la herramienta la capa que queremos.
 4. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los meses. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "mes". Esto solo funciona en las versiones recientes de QGIS, no en la que usamos nosotros (2.16). En el caso de la versión 2.6 hacemos lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada mes separado por punto y coma, así: 1;2;3; etc.  
-5. Haz click en cualquier parte del mapa y verás una gráfica de la distribución estacional del NDVI en el año 2000.
+5. Observa la imagen que ves abajo y haz zoom en la zona indicada. Verás un bosque de *Quercus pyrenaica* al oeste (hoja caduca) y un pinar de repoblación (hoja perenne) al este. 
+
+
+
+![sierranevada](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/imagenes/sierranevada.png)
+
+
+
+6. Genera una gráfica para las formaciones que hay en el margen oeste del valle que hay en la zona 1. Copia la gráfica y la pegas a un archivo de word. Reflexiona:
+   + ¿Qué tipo de formación crees que es? ¿caducifolia o perennifolia?
+7. En la misma zona, genera una gráfica para las formaciones más oscuras que hay al norte.
+   + ¿en qué se diferencia del otro bosque?
+8. Ahora vete a la zona 2 y haz click en varios puntos para obtener varias gráficas.
+   + ¿Qué tipo de vegetación crees que hay aquí?
 
 
 
@@ -288,7 +313,7 @@ Verás que cada polígono de la capa de zonas de interés tiene un número. Cada
 
 ## Ejercicio
 
-Para esta práctica tienes que completar un ejercicio parecido a lo que hemos hecho en la discusión que hay más arriba. Descarga [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2021-2022/geoinfo/ejercicio.zip) fichero de formas y despliégalo en el proyecto que ya tienes elaborado. Verás que solo contiene un polígono. Acércate a dicho polígono y trata de construir una historia que explique el comportamiento de ese ecosistema en los últimos 21 años. Para ello deberás utilizar la información de las imágenes de satélite que hemos elaborado y también las ortofotos de distintas fechas.
+Con objeto de comprobar lo que has aprendido en esta práctica, tienes la opción de completar un ejercicio parecido a lo que hemos hecho en la discusión que hay más arriba. No es obligatorio, pero mis comentarios a tu trabajo puede que te ayuden a afianzar los conocimientos adquiridos. Descarga [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2021-2022/geoinfo/ejercicio.zip) fichero de formas y despliégalo en el proyecto que ya tienes elaborado. Verás que solo contiene un polígono. Acércate a dicho polígono y trata de construir una historia que explique el comportamiento de ese ecosistema en los últimos 21 años. Para ello deberás utilizar la información de las imágenes de satélite que hemos elaborado y también las ortofotos de distintas fechas.
 
 A modo de guía, puedes reflexionar sobre las siguientes preguntas:
 
@@ -307,7 +332,7 @@ La imagen siguiente muestra en 3D el aspecto de la zona propuesta:
 
 <img src="https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/2021-2022/imagenes/ejercicio.png" alt="ejercicio" style="zoom: 33%;" />
 
-Sube tu ejercicio (en formato word o similar) a [este](https://www.turnitin.com/t_submit.asp?r=87.1371904811905&svr=43&lang=es&aid=120543054) enlace de Turnitin. Será evaluado siguiendo los siguientes criterios:
+Sube tu ejercicio (en formato word o similar) al ejercicio denominado "Práctica NDVI" de [este](https://www.turnitin.com/s_class_portfolio.asp?aid=102450&cid=37908594&lang=es&session-id=1a584c9444b04974870d28aa8546942c) enlace a Turnitin. Será evaluado siguiendo los siguientes criterios. Evaluar no significa calificar. Es decir, cuando lea tu contribución usaré los siguientes criterios para trata de saber lo que has aprendido. Repito que este ejercicio no lleva calificación asociada.
 
 
 
