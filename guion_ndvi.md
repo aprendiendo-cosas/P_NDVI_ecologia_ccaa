@@ -128,7 +128,7 @@ Seguiremos los siguientes pasos:
 1. Abre Rstudio
 2. Dale al botón archivo y crear nuevo archivo de R.
 3. Guarda el archivo de R en tu directorio de trabajo. Ahora iremos pegando en ese archivo las líneas de código siguientes:
-4. Primero establecemos el directorio de trabajo. Sustituye lo que hay entre comillas por tu ruta. Para acceder a la ruta, usa tu explorador de archivos, ponte sobre la barra de navegación, botón derecho y copiar ruta en modo texto. Ten en cuenta que en windows, cuando copies la ruta de la carpeta, pondrá las barras hacia la izquierda (así: \). Tienes que cambiarlas a mano y ponerlas hacia la derehca (así: /). Copia en R el texto inferior y luego ejecuta con el botón etiqutado con "Run" (Run the current line or selection). Procede así con todas las líneas de código que hay en este guión. 
+4. Primero establecemos el directorio de trabajo. Sustituye lo que hay entre comillas por tu ruta. Para acceder a la ruta, usa tu explorador de archivos, ponte sobre la barra de navegación, botón derecho y copiar ruta en modo texto. Ten en cuenta que en windows, cuando copies la ruta de la carpeta, pondrá las barras hacia la izquierda (así: \). Tienes que cambiarlas a mano y ponerlas hacia la derecha (así: /). Copia en R el texto inferior y luego ejecuta con el botón etiqutado con "Run" (Run the current line or selection). Procede así con todas las líneas de código que hay en este guión. 
 
 ```{r}
 ## Definimos directorio de trabajo y cargamos los paquetes necesarios
@@ -141,6 +141,12 @@ setwd("/Users/fjbonet_trabajo/Downloads/ndvi")
 ```{r}
 #Instalar y cargar los paquetes necesarios.
 install.packages("Kendall")
+
+#Instalación de Kendall si lo anterior da error:
+
+install.packages('Kendall', repo='http://nbcgib.uesc.br/mirrors/cran/')
+
+#instalación del resto de paquetes que necesitamos
 install.packages("rgdal")
 install.packages("raster")
 
@@ -175,9 +181,9 @@ writeRaster(ndvis, filename="ndvi_2000_2020.tif", format="GTiff", overwrite=TRUE
  ```
 
 7. Volvemos a QGIS y cargamos la capa que acabamos de crear (**ndvi_2000_2020.tif**). Contiene una banda por año. Y cada banda muestra el valor máximo de NDVI de ese año. Usaremos esta capa para construir automáticamente gráficas con las series temporales de cada píxel.
-7. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://drive.google.com/file/d/1LegawNBgWXDEsIg9KCdKJsFi6C_tsauW/view?usp=sharing) tienes la imagen con todas las bandas correspondientes a los años de nuestra serie temporal. 
+7. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://drive.google.com/file/d/10bJUxVz0FXfoN4ZiaSfdULDmVqywl4BT/view?usp=sharing) tienes la imagen con todas las bandas correspondientes a los años de nuestra serie temporal. 
 8. Instala un plugin (o complemento en castellano) llamado  "_Temporal/Spectral profile tool_". Menu _plugins_->_Manage and install plugins_. La instalación creará un nuevo botón que representa un gráfico rojo. 
-9. Selecciona la capa **_ndvi_2000_2021_** en QGIS.
+9. Selecciona la capa **_ndvi_2000_2020_** en QGIS.
 10. Haz click en el botón del plugin que acabas de instalar.
 11. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los años. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "year". Esto solo funciona en las versiones recientes de QGIS, no en la que usamos nosotros (2.16). En el caso de la versión 2.6 hacemos lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada año separado por punto y coma, así: 2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019;2020 
 12. Haz click en cualquier punto del mapa para que se muestre una imagen como la que ves a continuación. 
@@ -233,7 +239,7 @@ En primer lugar analizaremos cómo el índice de vegetación es útil para carac
 2. Ahora carga todas las imágenes QGIS. Puedes arrastrar los archivos tif a QGIS o seleccionar "cargar capa raster" del menú "capa". Verás muchas capas en una paleta de colores de escala de grises. Puedes cambiar la paleta a alguna imagen para ver mejor cómo se distribuye el NDVI máximo anual. 
 3. A continuación calcularemos el valor promedio de cada año para cada píxel. Abre la calculadora raster del menú "raster". Ahí debes de ir seleccionando todas las capas haciendo click sobre ellas y sumándolas. Luego pon un paréntesis entre todas las capas y divídelo todo por el número de capas. Así obtendremos el valor promedio. Guarda la imagen en tu carpeta y llámale "ndvi_promedio_2000_2020.tif".
 4. Acabado el cálculo, se cargará la imagen automáticamente. Una vez que esto ocurra, represéntala con la paleta de colores "greens". Como siempre: doble click sobre la capa, pestaña de estilo o simbología (dependiendo de tu versión de QGIS), "single band pseudocolor". Ponla también algo transparente (50%) para que se vea la ortofoto de fondo.
-5. Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://drive.google.com/file/d/1LegawNBgWXDEsIg9KCdKJsFi6C_tsauW/view?usp=sharing) puedes descargar el resultado que deberías haber obtenido. 
+5. Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://drive.google.com/file/d/17MRfzEShO-2aKdvEgUTJrI_3Q6bpS8ei/view?usp=sharing) puedes descargar el resultado que deberías haber obtenido. 
 
 
 
@@ -241,7 +247,7 @@ En primer lugar analizaremos cómo el índice de vegetación es útil para carac
 
 En esta última parte de la práctica cambiaremos de escala. Ahora, en lugar de analizar los valores de NDVI de cada año, usaremos los valores promedios de cada mes de un año concreto: 2000. Así, obtendremos una gráfica que muestra la estacionalidad (cambios de la producción primaria a lo largo del año). Procederemos de la siguiente manera:
 
-1. Descarga [esta](https://drive.google.com/file/d/1fdeZN1gRxv4z7Okt5oP2YlGq2Be61q5_/view?usp=sharing) (**ndvi_2000_mensual.tif**) imagen y cárgala en QGIS. Verás que QGIS la representa con una gama de colores muy peculiar. Eso se debe a que tiene muchas bandas. Concretamente 12. Una por mes. La banda 1 es enero, la 2, febrero y así sucesivamente. En cada banda hay información del valor máximo de NDVI en cada píxel para el mes en cuestión. También es posible que, dependiendo de la versión de QGIS que estés utilizando, se represente esta capa como totalmente en blanco. No te preocupes si ocurre eso. Todo está bien. 
+1. Descarga [esta](https://drive.google.com/file/d/19_WExaNgLx-R2fKgYMqRnBaZbAtSH1fW/view?usp=sharing) (**ndvi_2000_mensual.tif**) imagen y cárgala en QGIS. Verás que QGIS la representa con una gama de colores muy peculiar. Eso se debe a que tiene muchas bandas. Concretamente 12. Una por mes. La banda 1 es enero, la 2, febrero y así sucesivamente. En cada banda hay información del valor máximo de NDVI en cada píxel para el mes en cuestión. También es posible que, dependiendo de la versión de QGIS que estés utilizando, se represente esta capa como totalmente en blanco. No te preocupes si ocurre eso. Todo está bien. 
 2. Selecciona la capa **_ndvi_2000_mensual.tif_** en QGIS.
 3. Haz click en el botón del plugin que hemos usado antes para generar la gráfica de toda la serie temporal. Dale al botón "add layer" para añadir a la herramienta la capa que queremos.
 4. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los meses. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "mes". Esto solo funciona en las versiones recientes de QGIS, no en la que usamos nosotros (2.16). En el caso de la versión 2.6 hacemos lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada mes separado por punto y coma, así: 1;2;3; etc.  
@@ -262,21 +268,9 @@ En esta última parte de la práctica cambiaremos de escala. Ahora, en lugar de 
 
 
 
-## Salvavidas
 
-Si no has conseguido hacer lo que se describe en el guión, no te preocupes. [Aquí](https://drive.google.com/file/d/1FennOVlrU6fF8hdyYcYYFy3fXio_Wde-/view?usp=sharing) puedes descargar un zip con toda la información que necesitas para la discusión ecológica. Dicho zip contiene la siguiente información:
 
-+ Proyecto de QGIS (resultados_ndvi_Sierra_Nevada.qgz) que deberás abrir porque en él están referenciados los siguientes conjuntos de datos.
-+ Capa vectorial con las zonas de interés que estudiaremos en la siguiente sección (zonas_interes_NDVI.shp). Contiene una serie de polígonos en los que se dan situaciones relevantes que podremos analizar con una perspectiva ecológica.
-+ Grupo "escala bidecadal":
-  + ndvi_promedio_2000_2020.tif: Imagen que contiene el valor promedio del NDVI máximo anual en toda la serie temporal. Nos permitirá distinguir formaciones vegetales con diferente cantidad de biomasa fotosintéticamente activa.
-+ Grupo "escala interanual":
-  + tau_2000_2020.tif: Capa que contien el valor del estadístico tau para cada píxel de Sierra Nevada. Este valor da idea de la intensidad de la tendencia de la serie de NDVI. Cuanto más cercano a 1, más intensa y positiva es la tendencia. Es decir, hay una tendencia hacia tener más NDVI.
-  + ndvi_2000_2020_anual.tif: Imagen que contiene 21 bandas (1 por año) y que nos permitirá construir la gráfica de la serie temporal analizada. Su estudio nos ayudará a entender la "historia" que hay detrás de cada uno de los puntos analizados en la discusión.
-+ Grupo "escala mensual":
-  + ndvi_2000_mensual.tif : Imagen que contiene el valor máximo de NDVI para cada píxel en cada uno de los meses del año 2000. Esta información será útil para obtener gráficas que representan la estacionalidad del NDVI para el año en cuestión.
 
-Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir necesitas la capa vectorial que contiene los lugares que "visitaremos" en la siguiente sección. Descárgala [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2021-2022/geoinfo/zonas_interes.zip) y ponla en el proyecto con el que has estado trabajando en toda la clase. 
 
 También puede ser que no te haya dado tiempo a terminar la práctica en clase y que no tengas ordenador con el software necesario en casa. En ese caso puedes usar los escritorios virtuales de la UCO (que ya funcionan de nuevo). Puedes acceder a dichos escritorios en [esta](http://www.uco.es/servicios/informatica/novedades/185-acceso-remoto-a-los-escritorios) URL. Sigue las instrucciones que te dan en la página anterior. 
 
@@ -284,7 +278,7 @@ También puede ser que no te haya dado tiempo a terminar la práctica en clase y
 
 ## Discusión
 
-Una vez obtenidos los resultados, los analizaremos usando para ello el conocimiento ya adquirido sobre el concepto de producción primaria. 
+Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir necesitas la capa vectorial que contiene los lugares que "visitaremos" a continuación. Descárgala [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2021-2022/geoinfo/zonas_interes.zip) y ponla en el proyecto con el que has estado trabajando en toda la clase. 
 
 "Iremos" a varios lugares de Sierra Nevada y aprenderemos algo del funcionamiento de sus ecosistemas forestales mediante el análisis de toda la información anterior. 
 
