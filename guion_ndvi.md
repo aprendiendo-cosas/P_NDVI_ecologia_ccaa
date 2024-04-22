@@ -1,10 +1,10 @@
 # Guión de la práctica "caracterización de cambios temporales y espaciales en el funcionamiento de ecosistemas Mediterráneos mediante teledetección"
 
 
-> + **_Versión_**: 2022-2023
+> + **_Versión_**: 2023-2024
 > + **_Asignatura (grado)_**: Ecología (Ciencias ambientales)
 > + **_Autor_**: Curro Bonet-García (fjbonet@uco.es)
-> + **_Duración_**: Dos sesiones de dos horas.
+> + **_Duración_**: Dos sesiones de tres horas.
 
 
 
@@ -53,13 +53,13 @@ De manera más concreta, durante esta sesión trabajaremos con imágenes de sat�
 
 ## Organización general de la práctica
 
-Esta práctica se desarrollará de forma diferente a como hemos trabajado con las anteriores. Ya llevamos varias sesiones en las que habéis trabajado con SIG y con R. Así que creo que ha llegado el momento de que pongáis en práctica lo que habéis aprendido. Por ello, durante esta sesión yo no os acompañaré en la ejecución de las acciones de manejo de datos. En las siguientes secciones tenéis información detallada sobre los pasos que debéis dar. Tendréis que trabajar de forma más o menos autónoma. Esto ocurrirá en la primera parte de la práctica (2 horas). Durante la segunda mitad de la sesión trabajaremos juntos en la interpretación ecológica de los resultados obtenidos. De forma más sintética esta práctica tendrá la siguiente estructura:
+Esta práctica se desarrollará de forma diferente a como hemos trabajado con las anteriores. Ya llevamos varias sesiones en las que habéis trabajado con SIG y con R. Así que creo que ha llegado el momento de que pongáis en práctica lo que habéis aprendido. Por ello, durante esta sesión yo no os acompañaré en la ejecución de las acciones de manejo de datos. En las siguientes secciones tenéis información detallada sobre los pasos que debéis dar. Tendréis que trabajar de forma más o menos autónoma. Esto ocurrirá en la primera parte de la práctica (3 horas). Durante la segunda mitad de la sesión trabajaremos juntos en la interpretación ecológica de los resultados obtenidos. De forma más sintética esta práctica tendrá la siguiente estructura:
 
-+ Primera parte (2 horas). Los estudiantes desarrollan el guión y generan los resultados que deben de almacenarse de manera lógica y coherente en una carpeta de su elección (fuera del escritorio, por favor). Si en esa parte surgen dudas, procederéis dando de forma secuencial los siguientes pasos:
++ Primera parte (3 horas). Los estudiantes desarrollan el guión y generan los resultados que deben de almacenarse de manera lógica y coherente en una carpeta de su elección (fuera del escritorio, por favor). Si en esa parte surgen dudas, procederéis dando de forma secuencial los siguientes pasos:
   1. Intenta resolver la duda tú mismo/misma: lee bien el error que obtienes y trata de descifrar a qué se debe y cómo puedes resolverlo. Esto te ayudará a afianzar los conocimientos que tienes. Aprendemos más (y nos sentimos mejor) cuando resolvemos nuestras propias dudas. Si no lo consigues, ve al siguiente paso:
   2. Pregunta a tus compañeros: Intenta trasladar a tus compañeros el problema que has tenido. Trata de explicarles la situación lo mejor posible para que puedan ayudarte. Está comprobado que las personas que aprenden a la vez pueden ayudarse mejor que si interactúan dos personas con ritmos de aprendizajes diferentes. Yo aprendí esto hace años y seguramente lo explico peor que tus compañeros que lo acaban de aprender. Además, en este caso interactuáis con vuestros compañeros, que siempre es bueno. Si no conseguís resolver el problema, id al siguiente paso:
   3. Pregunta al profesor: Trata de explicar bien tu problema. Cuéntame qué has intentado para resolverlo y por qué crees que tus intentos anteriores han fallado. De esta forma entrenas tu capacidad discursiva y seguramente eso te ayudará a resolver el problema. 
-+ Segunda parte (2 horas): Cuando todos tengamos los procedimientos terminados prepararemos un proyecto de QGIS y sobre él "visitaremos" varios lugares de Sierra Nevada para analizar cómo cambia la actividad fotosintética en las distintas escalas espaciales y temporales descritas en la sección anterior.
++ Segunda parte (3 horas): Cuando todos tengamos los procedimientos terminados prepararemos un proyecto de QGIS y sobre él "visitaremos" varios lugares de Sierra Nevada para analizar cómo cambia la actividad fotosintética en las distintas escalas espaciales y temporales descritas en la sección anterior.
 
 
 
@@ -112,7 +112,7 @@ Seguiremos los siguientes pasos una vez que hayas completado lo que se dice en l
 1. Abre Rstudio
 2. Dale al botón archivo y crear nuevo archivo de R.
 3. Guarda el archivo de R en tu directorio de trabajo. Ahora iremos pegando en ese archivo las líneas de código siguientes:
-4. Primero establecemos el directorio de trabajo. Sustituye lo que hay entre comillas por tu ruta. Para acceder a la ruta, usa tu explorador de archivos, ponte sobre la barra de navegación, botón derecho y copiar ruta en modo texto. Ten en cuenta que en windows, cuando copies la ruta de la carpeta, pondrá las barras hacia la izquierda (así: \). Tienes que cambiarlas a mano y ponerlas hacia la derecha (así: /). Copia en R el texto inferior y luego ejecuta con el botón etiqutado con "Run" (Run the current line or selection). Procede así con todas las líneas de código que hay en este guión. 
+4. Primero establecemos el directorio de trabajo. Sustituye lo que hay entre comillas por tu ruta. Para acceder a la ruta, usa tu explorador de archivos, ponte sobre la barra de navegación, botón derecho y copiar ruta en modo texto. Ten en cuenta que en windows, cuando copies la ruta de la carpeta, pondrá las barras hacia la izquierda. Tienes que cambiarlas a mano y ponerlas hacia la derecha. Copia en R el texto inferior y luego ejecuta con el botón etiqutado con "Run" (Run the current line or selection). Procede así con todas las líneas de código que hay en este guión. 
 
 ```{r}
 ## Definimos directorio de trabajo y cargamos los paquetes necesarios
@@ -125,13 +125,12 @@ setwd("/Users/fjbonet_trabajo/Downloads/ndvi")
 ```{r}
 #Instalar los paquetes necesarios.
 install.packages("Kendall")
-install.packages("rgdal")
 install.packages("raster")
 
 #Cargar en memoria los paquetes anteriores.
-library(raster)
-library(rgdal)
 library(Kendall)
+library(sf)
+library(raster)
 
 ```
 
@@ -309,7 +308,7 @@ La imagen siguiente muestra en 3D el aspecto de la zona propuesta:
 
 <img src="https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_CCAA/main/imagenes/ejercicio.png" alt="ejercicio" style="zoom: 33%;" />
 
-Sube tu ejercicio (en formato word o similar) al ejercicio denominado "Práctica NDVI" de [este](https://www.turnitin.com/s_class_portfolio.asp?aid=102450&cid=37908594&lang=es&session-id=1a584c9444b04974870d28aa8546942c) enlace a Turnitin. Será evaluado siguiendo los siguientes criterios. Evaluar no significa calificar. Es decir, cuando lea tu contribución usaré los siguientes criterios para trata de saber lo que has aprendido. Repito que este ejercicio no lleva calificación asociada. Es decir, no tendrás ninguna nota por hacerlo.
+Sube tu ejercicio (en formato word o similar) al ejercicio denominado "Práctica NDVI" de [este](https://www.turnitin.com/t_submit.asp?aid=151139159) enlace a Turnitin. Será evaluado siguiendo los siguientes criterios. Evaluar no significa calificar. Es decir, cuando lea tu contribución usaré los siguientes criterios para trata de saber lo que has aprendido. Repito que este ejercicio no lleva calificación asociada. Es decir, no tendrás ninguna nota por hacerlo.
 
 
 
