@@ -87,22 +87,23 @@ Las siguientes secciones contienen información sobre cómo completar toda la pr
 
      1. Crea un proyecto QGIS vacío. 
      2. Ahora tienes que repetir los siguientes pasos tantas veces como elementos haya en la siguiente lista:
-
-
+     
         * Ortofoto 1998: http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_coloreada_Andalucia_2001?
         * Ortofoto 2004 (falso color infrarrojo): http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_CIR_Andalucia_SE_2004?
         * Ortofoto 2006-2007: http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_RGB_2006_2007
         * Ortofoto 2013: https://www.ideandalucia.es/wms/ortofoto2013?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0
         * Ortofoto 2016: https://www.ideandalucia.es/wms/ortofoto2016?VERSION=1.3.0
         * Ortofoto máxima actualidad: http://www.ign.es/wms-inspire/pnoa-ma
-     3. Ve a la opción de crear conexiones WMS (en el menú capa -> Cargar nueva capa -> Servicio WMS. También puedes encontrar esta opción en la barra de navegación, a la izquierda). Dale a crear nueva conexión. 
-     4. Ahora tienes que copiar una de las URL que aparece en la lista anterior. Ojo: copia también el signo de interrogación que hay al final de alguna de las URLs.
-     5. Pon el nombre de la conexión que más te guste. Te recomiendo que pongas el nombre que aparece en la lista de arriba junto a la URL.
-     6. Pega la URL en el campo correspondiente.
-     7. Dale a aceptar.
-     8. Conéctate al servicio y carga la capa correspondiente.
+             3. Ve a la opción de crear conexiones WMS (en el menú capa -> Cargar nueva capa -> Servicio WMS. También puedes encontrar esta opción en la barra de navegación, a la izquierda). Dale a crear nueva conexión. 
+             4. Ahora tienes que copiar una de las URL que aparece en la lista anterior. Ojo: copia también el signo de interrogación que hay al final de alguna de las URLs.
+             5. Pon el nombre de la conexión que más te guste. Te recomiendo que pongas el nombre que aparece en la lista de arriba junto a la URL.
+             6. Pega la URL en el campo correspondiente.
+             7. Dale a aceptar.
+             8. Conéctate al servicio y carga la capa correspondiente.
+     
 
    
+
 
 ### Sección 1: Serie temporal de NDVI anual: escala interanual
 
