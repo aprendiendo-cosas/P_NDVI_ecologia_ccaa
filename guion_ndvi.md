@@ -271,13 +271,10 @@ Esta sección es la que tendrás que trabajar en casa, preferiblemente en equipo
 
 Se trata, como en otras prácticas, de aplicar lo visto en clase al trabajo que tenemos que realizar sobre los ecosistemas de Sierra Nevada. En esta ocasión extraeremos de las capas obtenidas la siguiente información para cada ecosistema:
 
-+ Valor promedio de NDVI para cada ecosistema. Esto nos dará idea de cuánta biomasa fotosintéticamente activa hay en cada ecosistema de Sierra Nevada. Aplicaremos la herramienta de QGIS llamada "Estadística zonal" usando la capa de distribución de los ecosistemas  (Aquí está esa capa para todos los ecosistemas menos para el bosque de ribera. Y aquí la delimitación de este último ecosistema) y la capa denominada **_ndvi_promedio_2000_2020.tif_**. Esta última es la que has debido obtener al final de la sección 3 de este guión. Al aplicar este algoritmo de QGIS recuerda seleccionar el valor promedio (mean) de la variable a cuantificar. El resultado será una capa con una tabla de atributos en la que se mostrará para cada ecosistema el valor promedio del promedio del máximo anual de todos los píxeles que contiene dicho ecosistema. 
++ Valor promedio de la tendencia de NDVI para cada ecosistema. Esto nos dará una idea de la tendencia promedio del ecosistema en cuestión. Podremos saber si, por ejemplo, los pinares de repoblación tienden a fijar más carbono en los últimos 21 años o no. Aplicaremos la herramienta de QGIS llamada "Estadística zonal" usando la capa de distribución de los ecosistemas  ([Aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/refs/heads/main/geoinfo/ecosistemas_snev_dissolve.zip) está esa capa para todos los ecosistemas menos para el bosque de ribera. Y [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/refs/heads/main/geoinfo/bosque_ribera_dissolve.zip) la delimitación de este último ecosistema) y la capa denominada **_ndvi_promedio_2000_2020.tif_**. Esta última es la que has debido obtener al final de la sección 3 de este guión. Al aplicar este algoritmo de QGIS recuerda seleccionar el valor promedio (mean) de la variable a cuantificar. El resultado será una capa con una tabla de atributos en la que se mostrará para cada ecosistema el valor promedio del promedio del máximo anual de todos los píxeles que contiene dicho ecosistema. 
++ Valor promedio de la tendencia de NDVI para cada ecosistema.  Esto nos dará idea de cuánta biomasa fotosintéticamente activa hay en cada ecosistema de Sierra Nevada. Podremos saber si, por ejemplo, los bosques de ribera acumulan más o menos biomasa que los encinares. Para calcular esto hay que usar la misma herramienta de antes (Estadística zonal de QGIS). La diferencia es que en esta ocasión hay que usar la capa obtenida en la sección 2 llamada **_tau.tif_**.
 
-
-
-
-
-
+Los resultados obtenidos en estos casos son, como sabemos, tablas que muestran los valores promedios para cada ecosistema de los índices elegidos. Lo interesante de esto es comparar los valores obtenidos entre ecosistemas. Así podremos saber si "nuestro" ecosistema funciona de manera diferente o no al resto. En el trabajo final de la práctica deberéis incluir las tablas obtenidas y una descripción del comportamiento de vuestro ecosistema con respecto a las dos variables anteriores. 
 
 
 
