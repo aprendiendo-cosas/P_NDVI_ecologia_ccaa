@@ -1,10 +1,10 @@
-# Guión de la práctica "caracterización de cambios temporales y espaciales en el funcionamiento de ecosistemas Mediterráneos mediante teledetección"
+# Caracterización de cambios temporales y espaciales en el funcionamiento de ecosistemas Mediterráneos mediante teledetección
 
-
-> + **_Versión_**: 2023-2024
+> + **_Tipo de material_**: <span style="display: inline-block; font-size: 12px; color: white; background-color: #4caf50; border-radius: 5px; padding: 5px; font-weight: bold;"> Prácticas</span> 
+> + **_Versión_**: 2024-2025
 > + **_Asignatura (grado)_**: Ecología (Ciencias ambientales)
 > + **_Autor_**: Curro Bonet-García (fjbonet@uco.es)
-> + **_Duración_**: Dos sesiones de tres horas.
+> + **_Duración_**: 1.5 horas en clase y 1.5 horas en casa.
 
 
 
@@ -49,19 +49,6 @@ De manera más concreta, durante esta sesión trabajaremos con imágenes de sat�
 
 
 
-
-## Organización general de la práctica
-
-Esta práctica se desarrollará de forma diferente a como hemos trabajado con las anteriores. Ya llevamos varias sesiones en las que habéis trabajado con SIG y con R. Así que creo que ha llegado el momento de que pongáis en práctica lo que habéis aprendido. Por ello, durante esta sesión yo no os acompañaré en la ejecución de las acciones de manejo de datos. En las siguientes secciones tenéis información detallada sobre los pasos que debéis dar. Tendréis que trabajar de forma más o menos autónoma. Esto ocurrirá en la primera parte de la práctica (3 horas). Durante la segunda mitad de la sesión trabajaremos juntos en la interpretación ecológica de los resultados obtenidos. De forma más sintética esta práctica tendrá la siguiente estructura:
-
-+ Primera parte (3 horas). Los estudiantes desarrollan el guión y generan los resultados que deben de almacenarse de manera lógica y coherente en una carpeta de su elección (fuera del escritorio, por favor). Si en esa parte surgen dudas, procederéis dando de forma secuencial los siguientes pasos:
-  1. Intenta resolver la duda tú mismo/misma: lee bien el error que obtienes y trata de descifrar a qué se debe y cómo puedes resolverlo. Esto te ayudará a afianzar los conocimientos que tienes. Aprendemos más (y nos sentimos mejor) cuando resolvemos nuestras propias dudas. Si no lo consigues, ve al siguiente paso:
-  2. Pregunta a tus compañeros: Intenta trasladar a tus compañeros el problema que has tenido. Trata de explicarles la situación lo mejor posible para que puedan ayudarte. Está comprobado que las personas que aprenden a la vez pueden ayudarse mejor que si interactúan dos personas con ritmos de aprendizajes diferentes. Yo aprendí esto hace años y seguramente lo explico peor que tus compañeros que lo acaban de aprender. Además, en este caso interactuáis con vuestros compañeros, que siempre es bueno. Si no conseguís resolver el problema, id al siguiente paso:
-  3. Pregunta al profesor: Trata de explicar bien tu problema. Cuéntame qué has intentado para resolverlo y por qué crees que tus intentos anteriores han fallado. De esta forma entrenas tu capacidad discursiva y seguramente eso te ayudará a resolver el problema. 
-+ Segunda parte (3 horas): Cuando todos tengamos los procedimientos terminados prepararemos un proyecto de QGIS y sobre él "visitaremos" varios lugares de Sierra Nevada para analizar cómo cambia la actividad fotosintética en las distintas escalas espaciales y temporales descritas en la sección anterior.
-
-
-
 ## Flujo de trabajo general: procesamiento y análisis de imágenes de satélite
 
 El conjunto de procedimientos de agrupación y análisis de datos que realizaremos se puede ver en el siguiente esquema (puedes hacer zoom en él seleccionando la lupa que hay en la parte inferior). Dicho esquema se puede descargar [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2023_2024/presentaciones/flujograma_NDVI.drawio.zip).
@@ -73,7 +60,7 @@ El conjunto de procedimientos de agrupación y análisis de datos que realizarem
 
 Las siguientes secciones contienen información sobre cómo completar toda la práctica. Sin embargo, pueden realizarse de manera independiente.  Si vas a empezar por la primera y a completarlas todas secuencialmente, debes de dar los siguientes pasos solo una vez. Si no empiezas por la primera, haz estos pasos y luego sigue. Cuando cambies de sección no tienes que volver a dar estos pasos:
 
-1. Para las secciones 1, 2 y 3 necesitas descargar [este](https://ucordoba-my.sharepoint.com/:u:/g/personal/bv2bogaf_uco_es/Eb13278do3JGr4KsFoERr5EBUfNZZEz1tAn1HnOVr6EnYQ?e=jWUe0W) archivo comprimido (NDVI_maximo_anual.zip)  y guárdalo en una carpeta (que no sea el escritorio). Descomprime el archivo zip. Verás muchas imágenes con extensión .tif. Cada una de ellas muestra el valor máximo de NDVI de cada píxel para el año en cuestión. Esto se ha obtenido procesando imágenes del satélite Landsat que pasa por cada punto de la Tierra cada 16 días. Asegúrate de que Windows ha descomprimido correctamente el archivo.
+1. Para las secciones 1, 2 y 3 necesitas descargar [este](https://ucordoba-my.sharepoint.com/:u:/g/personal/bv2bogaf_uco_es/Ec7O0G4w5NxHtyk1xlV2Vy4BvI-56bg9bzUuPfuErLOKzg?e=ftKQnE) archivo comprimido (maximos_anuales.zip)  y guárdalo en una carpeta (que no sea el escritorio). Descomprime el archivo zip. Verás muchas imágenes con extensión .tif. Cada una de ellas muestra el valor máximo de NDVI de cada píxel para el año en cuestión. Son las imágenes que habéis generado en la asignatura de SIG con Google Earth Engine. Si prefieres usar las tuyas, puedes saltarte este paso.
 
 2. Ahora vamos a preparar un proyecto de QGIS en el que visualizar todos los resultados que obtengamos. En dicho proyecto pondremos ortofotografías de varios años para poder distinguir cuándo los cambios en el funcionamiento del bosque están alineados o no con cambios en su estructura. Para añadir estas fotografías a un proyecto de QGIS tienes dos opciones:
 
@@ -164,11 +151,11 @@ writeRaster(ndvis, filename="ndvi_2000_2020.tif", format="GTiff", overwrite=TRUE
  ```
 
 7. Volvemos a QGIS y cargamos la capa que acabamos de crear (**ndvi_2000_2020.tif**). Contiene una banda por año. Y cada banda muestra el valor máximo de NDVI de ese año. Usaremos esta capa para construir automáticamente gráficas con las series temporales de cada píxel.
-7. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://ucordoba-my.sharepoint.com/:i:/g/personal/bv2bogaf_uco_es/EQLl181VHPFBn1QHUsQxbcgBFd-k5y0fW6F6AfZ0neHamw?e=4uDBeo) tienes la imagen con todas las bandas correspondientes a los años de nuestra serie temporal. 
+7. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://ucordoba-my.sharepoint.com/:i:/g/personal/bv2bogaf_uco_es/EUtdBVt_G2NEtrjUl9dcPnYBNQOXdWhLZQaJhvSwwA1EKg?e=YX50v8) tienes la imagen con todas las bandas correspondientes a los años de nuestra serie temporal. 
 8. Instala un plugin (o complemento en castellano) llamado  "_Temporal/Spectral profile tool_". Menu _plugins_->_Manage and install plugins_. La instalación creará un nuevo botón que representa un gráfico rojo. 
 9. Selecciona la capa **_ndvi_2000_2020_** en QGIS.
 10. Haz click en el botón del plugin que acabas de instalar.
-11. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los años. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "year". Esto solo funciona en las versiones recientes de QGIS, no en la que usamos nosotros (2.16). En el caso de la versión 2.6 hacemos lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada año separado por punto y coma, así: 2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019;2020 
+11. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los años. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "year". Si esta opción no funciona bien, tienes que hacer lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada año separado por punto y coma, así: 2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019;2020 
 12. Haz click en cualquier punto del mapa para que se muestre una imagen como la que ves a continuación. 
 
 
@@ -214,19 +201,27 @@ writeRaster(kendal_result$tau, filename="tau.tif", format="GTiff", overwrite=TRU
 
 6. Ahora cargamos la capa recién creada (tau.tif) en QGIS. Esta capa contiene los valores de tendencias de NDVI para cada píxel. Una vez cargada hacemos doble click sobre la misma y la representamos usando el método de *singleband pseudocolor* y la paleta *spectral*. Ajusta el valor máximo a 0.99 y haz click en "elimina valores fuera de rango". Por último, le asignamos un grado de transparencia del 50%. Ahora podemos ver la tendencia de manera muy atractiva: los píxeles donde hay tendencia hacia más NDVI tienen colores verdes. Los que tienen tendencia hacia menos NDVI se muestran en rojo. 
 7. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2023_2024/geoinfo/tau_2000_2020.tif) tienes la capa tau con la tendencia de NDVI para cada píxel. 
-7. Selecciona en QGIS la capa que hemos usado en el bloque anterior (**ndvi_2000_2020**). Haz click en cualquier parte del mapa y verás la gráfica de los valores máximos de NDVI en ese punto.
+8. Selecciona en QGIS la capa que hemos usado en el bloque anterior (**ndvi_2000_2020**). Haz click en cualquier parte del mapa y verás la gráfica de los valores máximos de NDVI en ese punto.
 
 
 
 ### Sección 3: NDVI promedio de toda la serie temporal: Cantidad de biomasa fotosintéticamente activa
 
-En primer lugar analizaremos cómo el índice de vegetación es útil para caracterizar la cantidad de biomasa que hay en un lugar determinado. Para ello calcularemos el valor promedio del NDVI máximo anual para todos los píxeles de la zona de estudio. Haremos lo siguiente:
+El NDVI está muy relacionado con la cantidad de biomasa que hay en un territorio determinado. No solo nos da información de cómo de eficaces son los organismos autótrofos fijando biomasa, sino que también explica cuánta biomasa hay. Para estimar cuánta biomasa hay en los ecosistemas de Sierra Nevada, calcularemos el valor promedio de los valores máximos anuales obtenidos en Google Earth Engine. Es decir, calcularemos el promedio de todas las imágenes llamadas *Max_NDVI_2xxx.tif*.
 
-1. Asegúrate de haber completado los dos pasos de la sección anterior.
-2. Ahora carga todas las imágenes QGIS. Puedes arrastrar los archivos tif a QGIS o seleccionar "cargar capa raster" del menú "capa". Verás muchas capas en una paleta de colores de escala de grises. Puedes cambiar la paleta a alguna imagen para ver mejor cómo se distribuye el NDVI máximo anual. 
-3. A continuación calcularemos el valor promedio de cada año para cada píxel. Abre la calculadora raster del menú "raster". Ahí debes de ir seleccionando todas las capas haciendo click sobre ellas y sumándolas. Luego pon un paréntesis entre todas las capas y divídelo todo por el número de capas. Así obtendremos el valor promedio. Guarda la imagen en tu carpeta y llámale "ndvi_promedio_2000_2020.tif".
-4. Acabado el cálculo, se cargará la imagen automáticamente. Una vez que esto ocurra, represéntala con la paleta de colores "greens". Como siempre: doble click sobre la capa, pestaña de estilo o simbología (dependiendo de tu versión de QGIS), "single band pseudocolor". Ponla también algo transparente (50%) para que se vea la ortofoto de fondo.
-5. Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2023_2024/geoinfo/ndvi_promedio_2000_2020.tif) puedes descargar el resultado que deberías haber obtenido. 
+Esto se puede hacer cargando las 21 imágenes en QGIS y aplicando el promedio en la calculadora de mapas. Pero como ya somos expertos en R, lo haremos con esta herramienta de la siguiente forma. En el mismo script en el que hemos hecho lo anterior, podemos añadir las siguientes líneas de código:
+
+ ```r
+# Generamos una capa de R llamada "promedio" que calcula para cada píxel el valor promedio de todas las imágenes contenidas en el objeto "ndvis". Este objeto tiene todas las imágenes que se obtuvieron en Google Earth Engine 
+
+promedio <-calc(ndvis, mean)
+
+# Ahora exportamos el objeto promedio a una imagen .tif que podemos visualizar fácilmente en QGIS
+
+writeRaster(promedio, filename = "ndvi_promedio_2000_2020.tif", format="GTiff", overwrite=TRUE)
+ ```
+
+Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2023_2024/geoinfo/ndvi_promedio_2000_2020.tif) puedes descargar el resultado que deberías haber obtenido. 
 
 
 
@@ -234,32 +229,14 @@ En primer lugar analizaremos cómo el índice de vegetación es útil para carac
 
 En esta última parte de la práctica cambiaremos de escala. Ahora, en lugar de analizar los valores de NDVI de cada año, usaremos los valores promedios de cada mes de un año concreto: 2000. Así, obtendremos una gráfica que muestra la estacionalidad (cambios de la producción primaria a lo largo del año). Procederemos de la siguiente manera:
 
-1. Descarga [esta](https://ucordoba-my.sharepoint.com/:i:/g/personal/bv2bogaf_uco_es/EX0W4nzH341Kq85neg9i59cB5xHAHGUWefzI9ecUyE6qMA?e=omWLGS) (**ndvi_2000_mensual.tif**) imagen y cárgala en QGIS. Verás que QGIS la representa con una gama de colores muy peculiar. Eso se debe a que tiene muchas bandas. Concretamente 12. Una por mes. La banda 1 es enero, la 2, febrero y así sucesivamente. En cada banda hay información del valor máximo de NDVI en cada píxel para el mes en cuestión. También es posible que, dependiendo de la versión de QGIS que estés utilizando, se represente esta capa como totalmente en blanco. No te preocupes si ocurre eso. Todo está bien. 
-2. Selecciona la capa **_ndvi_2000_mensual.tif_** en QGIS.
+1. Descarga [esta](https://ucordoba-my.sharepoint.com/:i:/g/personal/bv2bogaf_uco_es/ETt12YaqLcJEiRdobH0OfmIBGRoZBS9xEb5w8qLmuTAGfA?e=fdwOTc) (**_Max_NDVI_2000_meses.tif_**) imagen y cárgala en QGIS. Es la imagen que obtuviste con Google Earth Engine para caracterizar los cambios mensuales en el NDVI. Verás que QGIS la representa con una gama de colores muy peculiar. Eso se debe a que tiene muchas bandas. Concretamente 12. Una por mes. La banda 1 es enero, la 2, febrero y así sucesivamente. En cada banda hay información del valor máximo de NDVI en cada píxel para el mes en cuestión. También es posible que, dependiendo de la versión de QGIS que estés utilizando, se represente esta capa como totalmente en blanco. No te preocupes si ocurre eso. Todo está bien. 
+2. Selecciona la capa **_Max_NDVI_2000_meses.tif_** en QGIS.
 3. Haz click en el botón del plugin que hemos usado antes para generar la gráfica de toda la serie temporal. Dale al botón "add layer" para añadir a la herramienta la capa que queremos.
-4. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los meses. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "mes". Esto solo funciona en las versiones recientes de QGIS, no en la que usamos nosotros (2.16). En el caso de la versión 2.6 hacemos lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada mes separado por punto y coma, así: 1;2;3; etc.  
-5. Observa la imagen que ves abajo y haz zoom en la zona indicada. Verás un bosque de *Quercus pyrenaica* al oeste (hoja caduca) y un pinar de repoblación (hoja perenne) al este. 
+4. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los meses. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "mes". Esto solo funciona en las versiones recientes de QGIS. Si no funciona en tu versión haz lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada mes separado por punto y coma, así: 1;2;3; etc.  
 
 
 
-![sierranevada](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/refs/tags/2023_2024/imagenes/sierranevada.png)
-
-
-
-6. Genera una gráfica para las formaciones que hay en el margen oeste del valle que hay en la zona 1. Copia la gráfica y la pegas a un archivo de word. Reflexiona:
-   + ¿Qué tipo de formación crees que es? ¿caducifolia o perennifolia?
-7. En la misma zona, genera una gráfica para las formaciones más oscuras que hay al norte.
-   + ¿en qué se diferencia del otro bosque?
-8. Ahora vete a la zona 2 y haz click en varios puntos para obtener varias gráficas.
-   + ¿Qué tipo de vegetación crees que hay aquí?
-
-
-
-También puede ser que no te haya dado tiempo a terminar la práctica en clase y que no tengas ordenador con el software necesario en casa. En ese caso puedes usar los escritorios virtuales de la UCO. Puedes acceder a dichos escritorios en [esta](http://www.uco.es/servicios/informatica/novedades/185-acceso-remoto-a-los-escritorios) URL. Sigue las instrucciones que te dan en la página anterior. 
-
-
-
-## Discusión
+## Aplicación de la información generada para entender mejor la estructura y el funcionamiento de la vegetación
 
 Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir necesitas la capa vectorial que contiene los lugares que "visitaremos" a continuación. Descárgala [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2023_2024/geoinfo/zonas_interes.zip) y ponla en el proyecto con el que has estado trabajando en toda la clase. 
 
@@ -288,38 +265,37 @@ Verás que cada polígono de la capa de zonas de interés tiene un número. Cada
 
    
 
-## Ejercicio
+## Aplicación de lo visto en la práctica al trabajo de los ecosistemas de Sierra Nevada
 
-Con objeto de comprobar lo que has aprendido en esta práctica, tienes la opción de completar un ejercicio parecido a lo que hemos hecho en la discusión que hay más arriba. No es obligatorio, pero mis comentarios a tu trabajo puede que te ayuden a afianzar los conocimientos adquiridos. Descarga [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2023_2024/geoinfo/ejercicio.zip) fichero de formas y despliégalo en el proyecto que ya tienes elaborado. Verás que solo contiene un polígono. Acércate a dicho polígono y trata de construir una historia que explique el comportamiento de ese ecosistema en los últimos 21 años. Para ello deberás utilizar la información de las imágenes de satélite que hemos elaborado y también las ortofotos de distintas fechas.
+Esta sección es la que tendrás que trabajar en casa, preferiblemente en equipo. 
 
-A modo de guía, puedes reflexionar sobre las siguientes preguntas:
+Se trata, como en otras prácticas, de aplicar lo visto en clase al trabajo que tenemos que realizar sobre los ecosistemas de Sierra Nevada. En esta ocasión extraeremos de las capas obtenidas la siguiente información para cada ecosistema:
 
-+ Tipo de vegetación:
-  + ¿se trata de un bosque, matorral o pasto?
-  + Si es bosque, ¿caducifolio o perennifolio?
-+ Funcionamiento y estructura:
-  + Fíjate en la gráfica interanual y en el valor de la tendencia.
-  + Los cambios que observas:
-    + ¿se deben a cambios en el funcionamiento o también a cambios estructurales?
-    + ¿qué crees que ha pasado en esta zona? Da una explicación que sea coherente con la información que obtienes del satélite y de las ortofotografías. 
-
-Plasma tu "historia" en un documento de texto que contenga también imágenes con las gráficas que generes y también los mapas que consideres oportunos. Recuerda que puedes usar las ortofotos de distintas fechas para analizar si el cambio en el funcionamiento está alineado o no con los cambios ena estructura. 
-
-La imagen siguiente muestra en 3D el aspecto de la zona propuesta:
-
-<img src="https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/refs/tags/2023_2024/imagenes/ejercicio.png" alt="ejercicio" style="zoom: 33%;" />
-
-Sube tu ejercicio (en formato word o similar) al ejercicio denominado "Práctica NDVI" de [este](https://www.turnitin.com/t_submit.asp?aid=151139159) enlace a Turnitin. Será evaluado siguiendo los siguientes criterios. Evaluar no significa calificar. Es decir, cuando lea tu contribución usaré los siguientes criterios para trata de saber lo que has aprendido. Repito que este ejercicio no lleva calificación asociada. Es decir, no tendrás ninguna nota por hacerlo.
++ Valor promedio de NDVI para cada ecosistema. Esto nos dará idea de cuánta biomasa fotosintéticamente activa hay en cada ecosistema de Sierra Nevada. Aplicaremos la herramienta de QGIS llamada "Estadística zonal" usando la capa de distribución de los ecosistemas  (Aquí está esa capa para todos los ecosistemas menos para el bosque de ribera. Y aquí la delimitación de este último ecosistema) y la capa denominada **_ndvi_promedio_2000_2020.tif_**. Esta última es la que has debido obtener al final de la sección 3 de este guión. Al aplicar este algoritmo de QGIS recuerda seleccionar el valor promedio (mean) de la variable a cuantificar. El resultado será una capa con una tabla de atributos en la que se mostrará para cada ecosistema el valor promedio del promedio del máximo anual de todos los píxeles que contiene dicho ecosistema. 
 
 
 
-| Criterio                                                     | Insuficiente                         | Aceptable                                                    | Bien                                                         | Buen trabajo                                                 | Excelente                                                    |
-| ------------------------------------------------------------ | ------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Manejo herramientas. Se evalúa tu manejo de las herramientas informáticas que hemos usado en la práctica. Esto se hace en función de la calidad de la información que aportas." | No entrega nada o es incomprensible. | Las gráficas y mapas que aportas son manifiestamente mejorables | Los mapas y gráficas son significativos, pero están a una escala insuficiente o no muestran bien los procesos ecológicos descritos. | Buena composición de los mapas y gráficas.                   | Has maquetado de manera muy elegante el material suministrado. Los mapas tienen su escala y la gama de colores es explicativa. |
-| Historia eoclógica. Se evalua si has contestado de manera razonada a la pregunta sobre la historia de la zona propuesta. No se trata de que aciertes o no, sino de que lo que cuentas sea plausible." | No entrega nada o es incomprensible. | Tu respuesta no tiene ningún sentido ecológico.              | Has aportado una respuesta pobremente justificada. Tus argumentos no se sostienen. | Además de responder de manera lógica, has sustentado tus argumentos con conceptos ecológicos. | Has conectado la pregunta con otros conceptos que hemos visto en la asignatura. Muestras gran capacidad de transferir conocimiento de un ámbito a otro. |
-| Legibilidad. Hace referencia a lo bien escrito que está el texto y a su legibilidad" | No entrega nada o es incomprensible. | Apenas entiendo lo que has escrito                           | He tenido que reinterpretar casi cada frase para entenderlo  | Se entiende bien todo, pero el texto no es fluido            | Muy buena redacción. La lectura fluye fácilmente, cual novela. |
 
 
+
+
+
+
+
+
+
+
+****
+
+[Aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/archive/refs/tags/2024_2025.zip) puedes descargar un archivo .zip que contiene este guión en formato html y todo el material que incluye.
+
+****
+Haz click [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/releases) para ver cómo ha cambiado este guión en los distintos cursos académicos.
+
+****
+ <p xmlns:cc="http://creativecommons.org/ns#" >El contenido de este repositorio se puede utilizar bajo la siguiente licencia:  <a  href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1"  target="_blank" rel="license noopener noreferrer"  style="display:inline-block;">CC BY-NC-SA 4.0<img  style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"   src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"  alt=""><img  style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"   src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"  alt=""><img  style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"   src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"  alt=""><img  style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"   src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"  alt=""></a></p> 
+
+<p>Esta licencia no aplica a enlaces a artículos, libros o imágenes no originales. Estos productos tienen su licencia correspondiente.</p>
 
 
 
