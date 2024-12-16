@@ -4,7 +4,7 @@
 > + **_Versión_**: 2024-2025
 > + **_Asignatura (grado)_**: Ecología (Ciencias ambientales)
 > + **_Autor_**: Curro Bonet-García (fjbonet@uco.es)
-> + **_Duración_**: 1.5 horas en clase y 1.5 horas en casa.
+> + **_Duración_**: 3 horas en clase y 1.5 horas en casa.
 
 
 
@@ -276,7 +276,7 @@ Se trata, como en otras prácticas, de aplicar lo visto en clase al trabajo que 
 
 Los resultados obtenidos en estos casos son, como sabemos, tablas que muestran los valores promedios para cada ecosistema de los índices elegidos. Lo interesante de esto es comparar los valores obtenidos entre ecosistemas. Así podremos saber si "nuestro" ecosistema funciona de manera diferente o no al resto. En el trabajo final de la práctica deberéis incluir las tablas obtenidas y una descripción del comportamiento de vuestro ecosistema con respecto a las dos variables anteriores. 
 
-
++ También podéis generar mapas de tendencia de NDVI y de NDVI promedio de vuestros ecosistemas exclusivamente. Para esto será necesario "recortar" las imágenes anteriores con la delimitación de cada ecosistema (en formato vectorial). Para esto se usa la herramienta de recortar un raster con una capa vectorial. Se encuentra en menú raster -> Extracción -> Recortar raster con máscara. Guarda el resultado y genera un mapa con una leyenda adecuada.
 
 
 
