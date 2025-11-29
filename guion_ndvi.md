@@ -1,7 +1,7 @@
 # Caracterización de cambios temporales y espaciales en el funcionamiento de ecosistemas Mediterráneos mediante teledetección
 
 > + **_Tipo de material_**: <span style="display: inline-block; font-size: 12px; color: white; background-color: #4caf50; border-radius: 5px; padding: 5px; font-weight: bold;"> Prácticas</span> 
-> + **_Versión_**: 2024-2025
+> + **_Versión_**: 2025-2026
 > + **_Asignatura (grado)_**: Ecología (Ciencias ambientales)
 > + **_Autor_**: Curro Bonet-García (fjbonet@uco.es)
 > + **_Duración_**: 3 horas en clase y 1.5 horas en casa.
@@ -229,7 +229,7 @@ Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://github.c
 
 En esta última parte de la práctica cambiaremos de escala. Ahora, en lugar de analizar los valores de NDVI de cada año, usaremos los valores promedios de cada mes de un año concreto: 2000. Así, obtendremos una gráfica que muestra la estacionalidad (cambios de la producción primaria a lo largo del año). Procederemos de la siguiente manera:
 
-1. Descarga [esta](https://ucordoba-my.sharepoint.com/:i:/g/personal/bv2bogaf_uco_es/ETt12YaqLcJEiRdobH0OfmIBGRoZBS9xEb5w8qLmuTAGfA?e=fdwOTc) (**_Max_NDVI_2000_meses.tif_**) imagen y cárgala en QGIS. Es la imagen que obtuviste con Google Earth Engine para caracterizar los cambios mensuales en el NDVI. Verás que QGIS la representa con una gama de colores muy peculiar. Eso se debe a que tiene muchas bandas. Concretamente 12. Una por mes. La banda 1 es enero, la 2, febrero y así sucesivamente. En cada banda hay información del valor máximo de NDVI en cada píxel para el mes en cuestión. También es posible que, dependiendo de la versión de QGIS que estés utilizando, se represente esta capa como totalmente en blanco. No te preocupes si ocurre eso. Todo está bien. 
+1. Descarga [esta](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/max_ndvi_2000_meses.zip) (**_Max_NDVI_2000_meses.tif_**) imagen y cárgala en QGIS. Es la imagen que obtuviste con Google Earth Engine para caracterizar los cambios mensuales en el NDVI. Verás que QGIS la representa con una gama de colores muy peculiar. Eso se debe a que tiene muchas bandas. Concretamente 12. Una por mes. La banda 1 es enero, la 2, febrero y así sucesivamente. En cada banda hay información del valor máximo de NDVI en cada píxel para el mes en cuestión. También es posible que, dependiendo de la versión de QGIS que estés utilizando, se represente esta capa como totalmente en blanco. No te preocupes si ocurre eso. Todo está bien. 
 2. Selecciona la capa **_Max_NDVI_2000_meses.tif_** en QGIS.
 3. Haz click en el botón del plugin que hemos usado antes para generar la gráfica de toda la serie temporal. Dale al botón "add layer" para añadir a la herramienta la capa que queremos.
 4. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los meses. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "mes". Esto solo funciona en las versiones recientes de QGIS. Si no funciona en tu versión haz lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada mes separado por punto y coma, así: 1;2;3; etc.  
