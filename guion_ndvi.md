@@ -6,7 +6,11 @@
 > + **Autor**: Curro Bonet-García (fjbonet@uco.es)
 > + **Duración**: 4 horas en clase y 1.5 horas en casa.
 
+![portada](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/refs/heads/main/imagenes/portada.png)
 
+
+
+<small> [Jumanbar](https://commons.wikimedia.org/wiki/File:Reflectancia_de_vegetaci%C3%B3n.svg), CC0, via Wikimedia Commons </small>
 
 ## Objetivos 
 
