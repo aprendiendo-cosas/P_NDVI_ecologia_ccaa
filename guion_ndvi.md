@@ -68,7 +68,7 @@ De manera más concreta, durante esta práctica trabajaremos con imágenes de sa
 
 
 
-![resumen](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/refs/tags/main/imagenes/resumen.png)
+![resumen](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/refs/heads/main/imagenes/resumen.png)
 
 
 
@@ -161,7 +161,7 @@ writeRaster(ndvis, filename="ndvi_2000_2020.tif", format="GTiff", overwrite=TRUE
  ```
 
 7. Volvemos a QGIS y cargamos la capa que acabamos de crear (`ndvi_2000_2020.tif`). Contiene una banda por año. Y cada banda muestra el valor máximo de NDVI de ese año. Usaremos esta capa para construir automáticamente gráficas con las series temporales de cada píxel.
-8. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://ucordoba-my.sharepoint.com/:i:/g/personal/bv2bogaf_uco_es/EUtdBVt_G2NEtrjUl9dcPnYBNQOXdWhLZQaJhvSwwA1EKg?e=YX50v8) tienes la imagen con todas las bandas correspondientes a los años de nuestra serie temporal. 
+8. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/ndvi_2000_2020.zip) tienes la imagen con todas las bandas correspondientes a los años de nuestra serie temporal. 
 9. Instala en QGIS un plugin (o complemento en castellano) llamado  "_Temporal/Spectral profile tool_". Menu _plugins_->_Manage and install plugins_. La instalación creará un nuevo botón que representa un gráfico rojo. 
 10. Selecciona la capa `ndvi_2000_2020` en QGIS.
 11. Haz click en el botón del plugin que acabas de instalar.
@@ -240,7 +240,7 @@ En esta última parte de la práctica cambiaremos de escala. Ahora, en lugar de 
 
 ## Interpretación ecológica de los datos obtenidos: ejercicio en grupo
 
-Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir necesitas la capa vectorial que contiene los lugares que "visitaremos" a continuación. Descárgala [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/zonas_interes.zip) EL ENLACE LLEVA A UNA CAPA INCORRECTA y ponla en el proyecto con el que has estado trabajando en toda la clase. 
+Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir necesitas la capa vectorial que contiene los lugares que "visitaremos" a continuación. Descárgala [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/zonas_interes.zip) y ponla en el proyecto con el que has estado trabajando en toda la clase. 
 
 "Iremos" a varios lugares de Sierra Nevada y aprenderemos algo del funcionamiento de sus ecosistemas forestales mediante el análisis de toda la información anterior. 
 
@@ -262,10 +262,18 @@ Verás que cada polígono de la capa de zonas de interés tiene un número. Cada
 + Escala interanual:
 
 
-  + En este ejercicio analizamos cómo cambia en el tiempo el NDVI máximo de cada píxel. Para analizar esto usaremos las capas llamadas `ndvi_2000_2020.tif` y `tau.tif`. La primera nos permitirá generar una gráfica de la evolución del NDVI y con la segunda tendremos un valor cuantitativo de dicha tendencia. Ambas capas deben de estar ya en tu proyecto de QGIS.
-  + Genera una gráfica de valores de NDVI con cualquier punto de la *Zona 6* (matorral de media montaña). Observa la gráfica interanual y también la tonalidad de los colores de los píxeles en la imagen `tau.tif`.  ¿Por qué tiene esa forma la gráfica? ¿qué pudo haber pasado entre 2004 y 2005 para explicar la gran bajada en el NDVI? ¿Qué ocurre después de 2005?
-  + Ahora genera una gráfica en cualquier punto de la *Zona 7* (pinares de repoblación). ¿Es parecido el patrón al observado en el punto anterior?
-  + Por último, genera una gráfica en cualquier punto de la *Zona 8* (encinares y robledales). ¿Qué patrón hay en esta mancha de vegetación?
+    + En este ejercicio analizamos cómo cambia en el tiempo el NDVI máximo de cada píxel. Para analizar esto usaremos las capas llamadas `ndvi_2000_2020.tif` y `tau.tif`. La primera nos permitirá generar una gráfica de la evolución del NDVI y con la segunda tendremos un valor cuantitativo de dicha tendencia. Ambas capas deben de estar ya en tu proyecto de QGIS.
+
+
+    + Genera una gráfica de valores de NDVI con cualquier punto de la *Zona 6* (matorral de media montaña). Observa la gráfica interanual y también la tonalidad de los colores de los píxeles en la imagen `tau.tif`.  ¿Por qué tiene esa forma la gráfica? ¿qué pudo haber pasado entre 2004 y 2005 para explicar la gran bajada en el NDVI? ¿Qué ocurre después de 2005?
+
+
+    + Ahora genera una gráfica en cualquier punto de la *Zona 7* (pinares de repoblación). ¿Es parecido el patrón al observado en el punto anterior?
+
+
+    + Por último, genera una gráfica en cualquier punto de la *Zona 8* (encinares y robledales). ¿Qué patrón hay en esta mancha de vegetación?
+
+
 
 + Escala intraanual:
 
