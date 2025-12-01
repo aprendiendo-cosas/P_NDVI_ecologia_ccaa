@@ -68,7 +68,7 @@ De manera más concreta, durante esta práctica trabajaremos con imágenes de sa
 
 
 
-![resumen](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/refs/tags/2024-2025/imagenes/resumen.png)
+![resumen](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/refs/tags/main/imagenes/resumen.png)
 
 
 
@@ -161,16 +161,16 @@ writeRaster(ndvis, filename="ndvi_2000_2020.tif", format="GTiff", overwrite=TRUE
  ```
 
 7. Volvemos a QGIS y cargamos la capa que acabamos de crear (`ndvi_2000_2020.tif`). Contiene una banda por año. Y cada banda muestra el valor máximo de NDVI de ese año. Usaremos esta capa para construir automáticamente gráficas con las series temporales de cada píxel.
-7. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://ucordoba-my.sharepoint.com/:i:/g/personal/bv2bogaf_uco_es/EUtdBVt_G2NEtrjUl9dcPnYBNQOXdWhLZQaJhvSwwA1EKg?e=YX50v8) tienes la imagen con todas las bandas correspondientes a los años de nuestra serie temporal. 
-8. Instala en QGIS un plugin (o complemento en castellano) llamado  "_Temporal/Spectral profile tool_". Menu _plugins_->_Manage and install plugins_. La instalación creará un nuevo botón que representa un gráfico rojo. 
-9. Selecciona la capa `ndvi_2000_2020` en QGIS.
-10. Haz click en el botón del plugin que acabas de instalar.
-11. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los años. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "year". Si esta opción no funciona bien, tienes que hacer lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada año separado por punto y coma, así: 2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019;2020 
-12. Haz click en cualquier punto del mapa para que se muestre una gráfica como la que ves a continuación. Con esta herramienta podremos generar automáticamente gráficas que muestran cómo cambia a lo largo del tiempo el NDVI máximo de cada punto. Podremos ver, por ejemplo, si hay tendencia hacia el crecimiento de la vegetación. También será fácil identificar el efecto de perturbaciones: incendios, sequías prolongadas, etc.
+8. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://ucordoba-my.sharepoint.com/:i:/g/personal/bv2bogaf_uco_es/EUtdBVt_G2NEtrjUl9dcPnYBNQOXdWhLZQaJhvSwwA1EKg?e=YX50v8) tienes la imagen con todas las bandas correspondientes a los años de nuestra serie temporal. 
+9. Instala en QGIS un plugin (o complemento en castellano) llamado  "_Temporal/Spectral profile tool_". Menu _plugins_->_Manage and install plugins_. La instalación creará un nuevo botón que representa un gráfico rojo. 
+10. Selecciona la capa `ndvi_2000_2020` en QGIS.
+11. Haz click en el botón del plugin que acabas de instalar.
+12. Haz click en la pestaña _settings_ que sale abajo y selecciona la opción "Time" del desplegable que hay bajo "X-axis steps". Vamos a hacer que en el eje X de la gráfica aparezcan los años. Pon 2000 en el año de inicio (Time frame start). Luego cambia en el desplegable el "time size frame" y selecciona "year". Si esta opción no funciona bien, tienes que hacer lo siguiente: en la pestaña *settings* selecciona la opción "string". Allí debes de teclear cada año separado por punto y coma, así: 2000;2001;2002;2003;2004;2005;2006;2007;2008;2009;2010;2011;2012;2013;2014;2015;2016;2017;2018;2019;2020 
+13. Haz click en cualquier punto del mapa para que se muestre una gráfica como la que ves a continuación. Con esta herramienta podremos generar automáticamente gráficas que muestran cómo cambia a lo largo del tiempo el NDVI máximo de cada punto. Podremos ver, por ejemplo, si hay tendencia hacia el crecimiento de la vegetación. También será fácil identificar el efecto de perturbaciones: incendios, sequías prolongadas, etc.
 
 
 
-![graph](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/refs/tags/2024-2025/imagenes/graph.png)
+![graph](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/refs/heads/main/imagenes/graph.png)
 
 
 
@@ -179,9 +179,9 @@ writeRaster(ndvis, filename="ndvi_2000_2020.tif", format="GTiff", overwrite=TRUE
 En las gráficas anteriores vemos cómo en algunos píxeles hay una tendencia hacia más NDVI y en otros hacia menos. Esto puede deberse a varios factores ambientales: incendios (caídas bruscas del NDVI), tratamientos forestales de reducción de la densidad (caídas de NDVI) o regeneración natural de la vegetación (aumento sostenido del NDVI). Es posible cuantificar esta tendencia usando un test estadístico llamado Mann Kendall. Este test analiza los valores anuales de NDVI y cuantifica si se ajusta a una línea ascendente o descendente. Si la tendencia es hacia más NDVI, el valor del test será positivo (como máximo de 1). Si la tendencia es negativa, el test arrojará un valor número negativo (mínimo de -1). Para aplicar dicho test, procederemos de la siguiente forma:
 
 1. Para completar esta sección debes de hacer también la anterior.
-1. Volvemos a Rstudio.
-2. Ejecutaremos un test estadístico llamado [Mann Kendall](https://www.statisticshowto.datasciencecentral.com/mann-kendall-trend-test/) sobre todas las bandas del objeto multicapa creado anteriormente. Este test permite analizar la evolución temporal de una serie de datos identificando si la tendencia es ascentente o descendente. Es un test no paramétrico, así que puede usarse en todas las distribuciones de datos. Para hacer esto pega el siguiente código en RStudio:
-3. "Encapsulamos" el test estadístico  [Mann Kendall](https://www.rdocumentation.org/packages/Kendall/versions/2.2/topics/MannKendall) en una funciónde R `fun_k`.
+2. Volvemos a Rstudio.
+3. Ejecutaremos un test estadístico llamado [Mann Kendall](https://www.statisticshowto.datasciencecentral.com/mann-kendall-trend-test/) sobre todas las bandas del objeto multicapa creado anteriormente. Este test permite analizar la evolución temporal de una serie de datos identificando si la tendencia es ascentente o descendente. Es un test no paramétrico, así que puede usarse en todas las distribuciones de datos. Para hacer esto pega el siguiente código en RStudio:
+4. "Encapsulamos" el test estadístico  [Mann Kendall](https://www.rdocumentation.org/packages/Kendall/versions/2.2/topics/MannKendall) en una funciónde R `fun_k`.
 
  ```r
 ## Calculamos la serie temporal de todos los pixeles
@@ -190,7 +190,7 @@ En las gráficas anteriores vemos cómo en algunos píxeles hay una tendencia ha
 fun_k <-function(x){return(unlist(MannKendall(x)))}
  ```
 
-4. Luego creamos un nuevo objeto llamado  `kendal_result` que contiene el resultado de aplicar la función Kendall al conjunto de datos (`ndvis`). El resultado es otro objeto espacial que contiene cinco bandas. Solo prestaremos atención a las siguientes:
+5. Luego creamos un nuevo objeto llamado  `kendal_result` que contiene el resultado de aplicar la función Kendall al conjunto de datos (`ndvis`). El resultado es otro objeto espacial que contiene cinco bandas. Solo prestaremos atención a las siguientes:
 
      - `tau`= Es el estadístico `tau` del test de Kendall. Contiene la tendencia que el test ha identificado en cada elemento de la serie. Los valores negativos indican que la tendencia es descentente y ascendente si son positivos. Es decir, valores positivos indican que hay una tendencia hacia más NDVI en el pixel en cuestión. 
 
@@ -203,7 +203,7 @@ kendal_result <-calc(ndvis, fun_k)
 
  ```
 
-5. Finalmente exportamos la banda `tau` a una imagen llamada `tau.tif`.  Si el comando que hay a continuación te da un error, intenta a sustituir "tau" por "layer.1" después del símbolo $. Pero no pongas las comillas.
+6. Finalmente exportamos la banda `tau` a una imagen llamada `tau.tif`.  Si el comando que hay a continuación te da un error, intenta a sustituir "tau" por "layer.1" después del símbolo $. Pero no pongas las comillas.
 
  ```r
 # Exportamos la tendencia (tau) a un tif. El resultado del test se guarda en varios objetos de R dentro de "kendal_result". Uno de ellos se llama tau. Contiene los valores de las tendencias de NDVI en cada píxel. Es un mapa de tendencias. 
@@ -211,9 +211,9 @@ kendal_result <-calc(ndvis, fun_k)
 writeRaster(kendal_result$tau, filename="tau.tif", format="GTiff", overwrite=TRUE)
  ```
 
-6. Ahora cargamos la capa recién creada (`tau.tif`) en QGIS. Esta capa contiene los valores de tendencias de NDVI para cada píxel. Una vez cargada hacemos doble click sobre la misma y la representamos usando el método de *singleband pseudocolor* y la paleta *spectral*. Ajusta el valor máximo a 0.99 y haz click en "elimina valores fuera de rango". Por último, le asignamos un grado de transparencia del 50%. Ahora podemos ver la tendencia de manera muy atractiva: los píxeles donde hay tendencia hacia más NDVI tienen colores verdes. Los que tienen tendencia hacia menos NDVI se muestran en rojo. 
-7. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2024-2025/geoinfo/tau_2000_2020.tif) tienes la capa tau con la tendencia de NDVI para cada píxel. 
-8. Ahora en QGIS puedes generar la gráfica de NDVI máximo de cada punto usando la herramienta descrita en la sección anterior y también visualizar (y consultar) el valor cuantitativo de dicha tendencia con la capa `tau.tif` que acabamos de crear.
+7. Ahora cargamos la capa recién creada (`tau.tif`) en QGIS. Esta capa contiene los valores de tendencias de NDVI para cada píxel. Una vez cargada hacemos doble click sobre la misma y la representamos usando el método de *singleband pseudocolor* y la paleta *spectral*. Ajusta el valor máximo a 0.99 y haz click en "elimina valores fuera de rango". Por último, le asignamos un grado de transparencia del 50%. Ahora podemos ver la tendencia de manera muy atractiva: los píxeles donde hay tendencia hacia más NDVI tienen colores verdes. Los que tienen tendencia hacia menos NDVI se muestran en rojo. 
+8. Si no has conseguido que RStudio haga lo que necesitamos, no te preocupes, [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/tau_2000_2020.tif) tienes la capa tau con la tendencia de NDVI para cada píxel. 
+9. Ahora en QGIS puedes generar la gráfica de NDVI máximo de cada punto usando la herramienta descrita en la sección anterior y también visualizar (y consultar) el valor cuantitativo de dicha tendencia con la capa `tau.tif` que acabamos de crear.
 
 
 
@@ -223,7 +223,7 @@ El NDVI está muy relacionado con la cantidad de biomasa que hay en un territori
 
 Esto se puede hacer cargando las 21 imágenes en QGIS y aplicando el promedio en la calculadora de mapas. Pero como ya somos expertos en R, lo haremos con esta herramienta. Busca en internet cómo calcular el promedio de todas las imágenes que ya tienes almacenadas en el objeto `ndvis`. Llama `promedio` al objeto generado. Y luego expórtalo a un archivo tif llamado `ndvi_promedio_2000_2020.tif`.
 
-Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2024-2025/geoinfo/ndvi_promedio_2000_2020.tif) puedes descargar el resultado que deberías haber obtenido. 
+Si no has conseguido hacer el proceso, no te preocupes, [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/ndvi_promedio_2000_2020.tif) puedes descargar el resultado que deberías haber obtenido. 
 
 
 
@@ -240,7 +240,7 @@ En esta última parte de la práctica cambiaremos de escala. Ahora, en lugar de 
 
 ## Interpretación ecológica de los datos obtenidos: ejercicio en grupo
 
-Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir necesitas la capa vectorial que contiene los lugares que "visitaremos" a continuación. Descárgala [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2024-2025/geoinfo/zonas_interes.zip) EL ENLACE LLEVA A UNA CAPA INCORRECTA y ponla en el proyecto con el que has estado trabajando en toda la clase. 
+Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir necesitas la capa vectorial que contiene los lugares que "visitaremos" a continuación. Descárgala [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/zonas_interes.zip) EL ENLACE LLEVA A UNA CAPA INCORRECTA y ponla en el proyecto con el que has estado trabajando en toda la clase. 
 
 "Iremos" a varios lugares de Sierra Nevada y aprenderemos algo del funcionamiento de sus ecosistemas forestales mediante el análisis de toda la información anterior. 
 
@@ -280,7 +280,7 @@ Verás que cada polígono de la capa de zonas de interés tiene un número. Cada
 
 Esta sección es la que tendrás que trabajar en casa. Se trata, como en otras prácticas, de aplicar lo visto en clase al trabajo que tenemos que realizar sobre los ecosistemas de Sierra Nevada. En esta ocasión extraeremos de las capas obtenidas la siguiente información para cada ecosistema:
 
-+ Valor promedio de la tendencia de NDVI para cada ecosistema. Esto nos dará una idea de la tendencia promedio del ecosistema en cuestión. Podremos saber si, por ejemplo, los pinares de repoblación tienden a fijar más carbono en los últimos 21 años o no y si su tendencia promedio es diferente a la de los encinares. Aplicaremos la herramienta de QGIS llamada "Estadística zonal" usando la capa de distribución de los ecosistemas  ([Aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2024-2025/geoinfo/ecosistemas_snev_dissolve.zip) está esa capa para todos los ecosistemas menos para el bosque de ribera. Y [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2024-2025/geoinfo/bosque_ribera_dissolve.zip) la delimitación de este último ecosistema) y la capa denominada `tau.tif`. Esta última es la que has debido obtener al final de la sección 3 de este guión. Al aplicar este algoritmo de QGIS recuerda seleccionar el valor promedio (mean) de la variable a cuantificar. El resultado será una capa con una tabla de atributos en la que se mostrará para cada ecosistema el valor promedio de la tendencia de cambio de NDVI de todos los píxeles que contiene dicho ecosistema. Ya has debido hacer este proceso pero con otros datos en otras prácticas. 
++ Valor promedio de la tendencia de NDVI para cada ecosistema. Esto nos dará una idea de la tendencia promedio del ecosistema en cuestión. Podremos saber si, por ejemplo, los pinares de repoblación tienden a fijar más carbono en los últimos 21 años o no y si su tendencia promedio es diferente a la de los encinares. Aplicaremos la herramienta de QGIS llamada "Estadística zonal" usando la capa de distribución de los ecosistemas  ([Aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/ecosistemas_snev_dissolve.zip) está esa capa para todos los ecosistemas menos para el bosque de ribera. Y [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/bosques_ribera_dissolve.zip) la delimitación de este último ecosistema) y la capa denominada `tau.tif`. Esta última es la que has debido obtener al final de la sección 3 de este guión. Al aplicar este algoritmo de QGIS recuerda seleccionar el valor promedio (mean) de la variable a cuantificar. El resultado será una capa con una tabla de atributos en la que se mostrará para cada ecosistema el valor promedio de la tendencia de cambio de NDVI de todos los píxeles que contiene dicho ecosistema. Ya has debido hacer este proceso pero con otros datos en otras prácticas. 
 + Valor promedio de NDVI para cada ecosistema.  Esto nos dará idea de cuánta biomasa fotosintéticamente activa hay en cada ecosistema de Sierra Nevada. Podremos saber si, por ejemplo, los bosques de ribera acumulan más o menos biomasa que los encinares. Para calcular esto hay que usar la misma herramienta de antes (Estadística zonal de QGIS). La diferencia es que en esta ocasión hay que usar la capa obtenida en la sección 2 llamada `ndvi_promedio_2000_2020.tif`.
 
 Los resultados obtenidos en los puntos anteriores son, como sabemos, tablas que muestran los valores promedios para cada ecosistema de los índices elegidos. Lo interesante de esto es comparar los valores obtenidos entre ecosistemas. Así podremos saber si "nuestro" ecosistema funciona de manera diferente o no al resto. En el trabajo final de la práctica deberéis incluir las tablas obtenidas y una descripción del comportamiento de vuestro ecosistema con respecto a las dos variables anteriores. 
@@ -293,7 +293,7 @@ Los resultados obtenidos en los puntos anteriores son, como sabemos, tablas que 
 
 ****
 
-[Aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/archive/refs/tags/2024_2025.zip) puedes descargar un archivo .zip que contiene este guión en formato html y todo el material que incluye.
+[Aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/archive/refs/tags/2025_2026.zip) puedes descargar un archivo .zip que contiene este guión en formato html y todo el material que incluye.
 
 ****
 Haz click [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/releases) para ver cómo ha cambiado este guión en los distintos cursos académicos.
