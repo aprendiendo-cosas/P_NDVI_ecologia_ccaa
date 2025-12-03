@@ -93,7 +93,6 @@ Las siguientes secciones contienen información sobre cómo completar toda la pr
 
    * Opción fácil: 
      * Descarga y descomprime [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/ortofotos_wms.zip) proyecto de QGIS a la carpeta en la que estés trabajando y ábrelo. Verás que se cargan ortofotografías de varias fechas. Todas ellas proceden de servicios WMS que yo he preparado para tí. 
-     * Carga en este proyecto una imagen tif de las que has obtenido en el punto 1 de esta sección. Usaremos esa imagen únicamente para ubicarnos en la zona de estudio.
      * Guarda el proyecto y sigue con las distintas secciones.
      * Lo malo de esta opción es que, según he visto en algunos grupos, el proyecto a veces no carga bien las imágenes. Otras veces este proyecto genera problemas con la herramienta de QGIS que usamos para mostrar la gráfica de la serie temporal de NDVI. 
    * Opción menos fácil pero más segura: Esta opción consiste en que tú construyas tu propio proyecto de QGIS con las ortofotos que necesitamos. Sigue estos pasos. [Este](https://www.youtube.com/watch?v=jlW6RTFvIfo) vídeo también describe bien cómo proceder:
@@ -115,7 +114,6 @@ Las siguientes secciones contienen información sobre cómo completar toda la pr
      8. Conéctate al servicio y carga la capa correspondiente.
 
    
-
 
 
 
