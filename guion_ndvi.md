@@ -87,7 +87,7 @@ El conjunto de procedimientos de agrupación y análisis de datos que realizarem
 
 Las siguientes secciones contienen información sobre cómo completar toda la práctica. Sin embargo, pueden realizarse de manera independiente.  Si vas a empezar por la primera y a completarlas todas secuencialmente, debes de dar los siguientes pasos solo una vez. Si no empiezas por la primera, haz estos pasos y luego sigue. Cuando cambies de sección no tienes que volver a dar estos pasos:
 
-1. Para las secciones 1, 2 y 3 necesitas utilizar las imágenes con los máximos anuales que debiste crear en una práctica de la asignatura de SIG (usando Google Earth Engine). Cada una de esas imágenes muestra el valor máximo de NDVI de cada píxel para el año en cuestión. 
+1. Para las secciones 1, 2 y 3 necesitas utilizar las imágenes con los máximos anuales que debiste crear en una práctica de la asignatura de SIG (usando Google Earth Engine). Cada una de esas imágenes muestra el valor máximo de NDVI de cada píxel para el año en cuestión. Si no tienes esas imágenes, puedes descargarlas [aquí](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/ndvi_maximo_anual.zip). 
 
 2. Ahora vamos a preparar un proyecto de QGIS en el que visualizar todos los resultados que obtengamos. En dicho proyecto pondremos ortofotografías de varios años para poder distinguir cuándo los cambios en el funcionamiento del bosque están alineados o no con cambios en su estructura. Para añadir estas fotografías a un proyecto de QGIS tienes dos opciones:
 
@@ -265,22 +265,40 @@ Verás que cada polígono de la capa de zonas de interés tiene un número. Cada
 + Escala interanual:
 
 
-    + En este ejercicio analizamos cómo cambia en el tiempo el NDVI máximo de cada píxel. Para analizar esto usaremos las capas llamadas `ndvi_2000_2020.tif` y `tau.tif`. La primera nos permitirá generar una gráfica de la evolución del NDVI y con la segunda tendremos un valor cuantitativo de dicha tendencia. Ambas capas deben de estar ya en tu proyecto de QGIS.
+  + En este ejercicio analizamos cómo cambia en el tiempo el NDVI máximo de cada píxel. Para analizar esto usaremos las capas llamadas `ndvi_2000_2020.tif` y `tau.tif`. La primera nos permitirá generar una gráfica de la evolución del NDVI y con la segunda tendremos un valor cuantitativo de dicha tendencia. Ambas capas deben de estar ya en tu proyecto de QGIS.
+  + Genera una gráfica de valores de NDVI con cualquier punto de la *Zona 6* (matorral de media montaña). Observa la gráfica interanual y también la tonalidad de los colores de los píxeles en la imagen `tau.tif`.  ¿Por qué tiene esa forma la gráfica? ¿qué pudo haber pasado entre 2004 y 2005 para explicar la gran bajada en el NDVI? ¿Qué ocurre después de 2005?. Para responder a estas preguntas usa las distintas fotografías aéreas que tienes en tu proyecto. Compara los cambios en la estructura (fotos aéreas) con los cambios en el funcionamiento (NDVI).
+  + Ahora genera una gráfica en cualquier punto de la *Zona 7* (pinares de repoblación). ¿Es parecido el patrón al observado en el punto anterior?
+  + Por último, genera una gráfica en cualquier punto de la *Zona 8* (encinares y robledales). ¿Qué patrón hay en esta mancha de vegetación?
 
-
-    + Genera una gráfica de valores de NDVI con cualquier punto de la *Zona 6* (matorral de media montaña). Observa la gráfica interanual y también la tonalidad de los colores de los píxeles en la imagen `tau.tif`.  ¿Por qué tiene esa forma la gráfica? ¿qué pudo haber pasado entre 2004 y 2005 para explicar la gran bajada en el NDVI? ¿Qué ocurre después de 2005?.
-
-
-    + Ahora genera una gráfica en cualquier punto de la *Zona 7* (pinares de repoblación). ¿Es parecido el patrón al observado en el punto anterior?
-
-
-    + Por último, genera una gráfica en cualquier punto de la *Zona 8* (encinares y robledales). ¿Qué patrón hay en esta mancha de vegetación?
 
 
 + Escala intraanual:
 
   + Por último, generaremos gráficas a partir de la imagen `Max_NDVI_2000_meses.tif` que debes de tener ya en tu proyecto de QGIS. Esto nos permitirá evaluar cómo cambia la actividad fotosintética a lo largo de los distintos meses del año 2000.
   + Genera una gráfica en cualquier punto de la *Zona 9*. La zona situada más al oeste está cubierta de robledales de *Quercus pyrenaica*. Hacia el este hay un pinar de repoblación. Haz una gráfica para cada sub-zona. ¿En qué se diferencian las gráficas intraanuales (estacionales) de estas dos formaciones? ¿A qué crees que se deben tales diferencias?
+
++ Interpretación integral del paisaje combinando datos de NDVI y ortofotos.
+
+
+    + Muévete a  la *Zona 10*. Se trata de una ladera de Sierra Nevada orientada al norte. En la actualidad esta zona está ocupada por ejemplares de *Quercus pyrenaica* en la parte inferior (cerca del río), piornales (*Genista sp.*) en la zona media, y pastizales (*Festuca sp.*) en la parte alta. Vamos a interpretar el funcionamiento de esta ladera y los cambios de estructura en los ecosistemas.
+
+
+    + Veamos cómo cambia la biomasa promedio conforme subimos en la ladera. ¿se observa algún patrón? En caso afirmativo, ¿a qué puede deberse ese patrón?
+
+
+    + Ahora analicemos cómo cambia la tendencia de NDVI en la ladera en cuestión. De nuevo, ¿observas algún patrón espacial? En caso afirmativo, ¿a qué podría deberse? Para entender mejor lo que ocurre aquí, vamos a utilizar una capa de información nueva. Aquí puedes descargar una imagen tif que muestra la tendencia de la duración de la cubierta de nieve en Sierra Nevada. Se ha generado xxxxxxxxxxx. Descarga la capa y ponla en tu proyecto de QGIS. Ponle una paleta de colores diferente a las demás que ya tienes para que se distinga bien. Por ejemplo usa una llamada *viridis*. xxx
+    + La respuesta que hemos identificado anteriormente nos da información relevante sobre lo que ha pasado en esta zona en los últimos 20 años. Pero, ¿podemos irnos un poco más atrás en la historia? En nuestro proyecto de QGIS tenemos fotografías aéreas desde el año 1998 hasta la actualidad. Ahora incorporaremos una más. En este caso del año 1956. Se trata de la primera fotografía aérea que se ha tomado en España. Puedes incorporarla a tu proyecto como un servicio WMS pegando la siguiente dirección: `http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956`. Una vez incorporada a tu proyecto, haremos lo siguiente:
+
+      + Haz zoom sobre la parte de la *Zona 10* más cercana al río. 
+      + Mueve la fotografía de 1956 justo arriba de la de 1998.
+      + Activa la foto de 1956. ¿Cómo era el paisaje en ese año? ¿había más o menos cobertura vegetal?
+      + Ahora ve activando las demás fotos para ver cómo ha cambiado la estructura del paisaje. Responde las siguientes preguntas:
+
+        + ¿Qué observas? ¿Crees que ha aumentado o disminuido la cubierta vegetal (y por tanto el NDVI) desde 1956 hasta la actualidad?
+        + ¿A qué se debe el cambio observado?
+
+      + La respuesta a todas estas preguntas está relacionada con el concepto de "cambio de usos del suelo" y también con las consecuencias que el cambio climático empieza a tener en nuestra zona. 
+
 
   
 
