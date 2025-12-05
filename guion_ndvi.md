@@ -249,47 +249,71 @@ Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir neces
 
 Verás que cada polígono de la capa de zonas de interés tiene un número. Cada uno nos permite identificar distintos elementos interesantes a las tres escalas de trabajo que hemos experimentado:
 
-+ Escala bidecadal:
+1. Escala bidecadal:
 
-  + Distribución espacial de la biomasa fotosintéticamente activa. Para analizar esto usaremos la capa llamada `ndvi_promedio_2000_2020.tif` que ya debe de estar cargada en tu proyecto de QGIS. Haz click en alguno de los píxeles ocupados por los siguientes puntos y anota el valor de NDVI promedio
+     + Distribución espacial de la biomasa fotosintéticamente activa. Para analizar esto usaremos la capa llamada `ndvi_promedio_2000_2020.tif` que ya debe de estar cargada en tu proyecto de QGIS. Haz click en alguno de los píxeles ocupados por los siguientes puntos y anota el valor de NDVI promedio
 
-    + *Zona 1*: Matorral de media montaña. 
-    + *Zona 2*: Pinares de repoblación de media montaña. 
-    + *Zona 3*: Matorral leñoso de alta montaña.  
-    + *Zona 4*: Pastizal psicoxerófilo de alta montaña. 
+       + *Zona 1*: Matorral de media montaña. 
+       + *Zona 2*: Pinares de repoblación de media montaña. 
+       + *Zona 3*: Matorral leñoso de alta montaña.  
+       + *Zona 4*: Pastizal psicoxerófilo de alta montaña. 
 
-    ¿Cuál es el ranking de biomasa total de las zonas observadas anteriormente?, ¿cómo explicas este ranking?
+       ¿Cuál es el ranking de biomasa total de las zonas observadas anteriormente?, ¿cómo explicas este ranking?
 
-    + Ahora haz click  en la *Zona 5* para obtener su valor de NDVI promedio. Se trata de un borreguil de alta montaña. ¿qué lugar ocuparía este ecosistema en el ranking anterior?, ¿a qué se debe este comportamiento?
-
-+ Escala interanual: 
-  + En este ejercicio analizamos cómo cambia en el tiempo el NDVI máximo de cada píxel. Para analizar esto usaremos las capas llamadas `ndvi_2000_2020.tif` y `tau.tif`. La primera nos permitirá generar una gráfica de la evolución del NDVI y con la segunda tendremos un valor cuantitativo de dicha tendencia. Ambas capas deben de estar ya en tu proyecto de QGIS.
-  + Genera una gráfica de valores de NDVI con cualquier punto de la *Zona 6* (matorral de media montaña). Observa la gráfica interanual y también la tonalidad de los colores de los píxeles en la imagen `tau.tif`.  ¿Por qué tiene esa forma la gráfica? ¿qué pudo haber pasado entre 2004 y 2005 para explicar la gran bajada en el NDVI? ¿Qué ocurre después de 2005?. Para responder a estas preguntas usa las distintas fotografías aéreas que tienes en tu proyecto. Compara los cambios en la estructura (fotos aéreas) con los cambios en el funcionamiento (NDVI).
-  + Ahora genera una gráfica en cualquier punto de la *Zona 7* (pinares de repoblación). ¿Es parecido el patrón al observado en el punto anterior?
-  + Por último, genera una gráfica en cualquier punto de la *Zona 8* (encinares y robledales). ¿Qué patrón hay en esta mancha de vegetación?
+       + Ahora haz click  en la *Zona 5* para obtener su valor de NDVI promedio. Se trata de un borreguil de alta montaña. ¿qué lugar ocuparía este ecosistema en el ranking anterior?, ¿a qué se debe este comportamiento?
 
 
-+ Escala intraanual:
+2. Escala interanual: 
 
-  + Por último, generaremos gráficas a partir de la imagen `Max_NDVI_2000_meses.tif` que debes de tener ya en tu proyecto de QGIS. Esto nos permitirá evaluar cómo cambia la actividad fotosintética a lo largo de los distintos meses del año 2000.
-  + Genera una gráfica en cualquier punto de la *Zona 9*. La zona situada más al oeste está cubierta de robledales de *Quercus pyrenaica*. Hacia el este hay un pinar de repoblación. Haz una gráfica para cada sub-zona. ¿En qué se diferencian las gráficas intraanuales (estacionales) de estas dos formaciones? ¿A qué crees que se deben tales diferencias?
+     + En este ejercicio analizamos cómo cambia en el tiempo el NDVI máximo de cada píxel. Para analizar esto usaremos las capas llamadas `ndvi_2000_2020.tif` y `tau.tif`. La primera nos permitirá generar una gráfica de la evolución del NDVI y con la segunda tendremos un valor cuantitativo de dicha tendencia. Ambas capas deben de estar ya en tu proyecto de QGIS.
 
-+ Interpretación integral del paisaje combinando datos de NDVI y ortofotos.
-  + Muévete a  la *Zona 10*. Se trata de una ladera de Sierra Nevada orientada al norte. En la actualidad esta zona está ocupada por ejemplares de *Quercus pyrenaica* en la parte inferior (cerca del río), piornales (*Genista sp.*) en la zona media, y pastizales (*Festuca sp.*) en la parte alta. Vamos a interpretar el funcionamiento de esta ladera y los cambios de estructura en los ecosistemas.
-  + Veamos cómo cambia la biomasa promedio conforme subimos en la ladera. ¿se observa algún patrón? En caso afirmativo, ¿a qué puede deberse ese patrón?
-  + Ahora analicemos cómo cambia la tendencia de NDVI en la ladera en cuestión. De nuevo, ¿observas algún patrón espacial? En caso afirmativo, ¿a qué podría deberse? Para entender mejor lo que ocurre aquí, vamos a utilizar una fuente de información nueva: la cubierta de nieve. Veremos qué efecto puede tener la
-    + La respuesta que hemos identificado anteriormente nos da información relevante sobre lo que ha pasado en esta zona en los últimos 20 años. Pero, ¿podemos irnos un poco más atrás en la historia? En nuestro proyecto de QGIS tenemos fotografías aéreas desde el año 1998 hasta la actualidad. Ahora incorporaremos una más. En este caso del año 1956. Se trata de la primera fotografía aérea que se ha tomado en España. Puedes incorporarla a tu proyecto como un servicio WMS pegando la siguiente dirección: `http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956`. Una vez incorporada a tu proyecto, haremos lo siguiente:
+     + Genera una gráfica de valores de NDVI con cualquier punto de la *Zona 6* (matorral de media montaña). Observa la gráfica interanual y también la tonalidad de los colores de los píxeles en la imagen `tau.tif`.  ¿Por qué tiene esa forma la gráfica? ¿qué pudo haber pasado entre 2004 y 2005 para explicar la gran bajada en el NDVI? ¿Qué ocurre después de 2005?. Para responder a estas preguntas usa las distintas fotografías aéreas que tienes en tu proyecto. Compara los cambios en la estructura (fotos aéreas) con los cambios en el funcionamiento (NDVI).
 
+     + Ahora genera una gráfica en cualquier punto de la *Zona 7* (pinares de repoblación). ¿Es parecido el patrón al observado en el punto anterior?
+
+     + Por último, genera una gráfica en cualquier punto de la *Zona 8* (encinares y robledales). ¿Qué patrón hay en esta mancha de vegetación?
+
+
+3. Escala intraanual:
+
+     + Ahora generaremos gráficas a partir de la imagen `Max_NDVI_2000_meses.tif` que debes de tener ya en tu proyecto de QGIS. Esto nos permitirá evaluar cómo cambia la actividad fotosintética a lo largo de los distintos meses del año 2000.
+
+     + Crea una gráfica en cualquier punto de la *Zona 9*. La zona situada más al oeste está cubierta de robledales de *Quercus pyrenaica*. Hacia el este hay un pinar de repoblación. Haz una gráfica para cada sub-zona. ¿En qué se diferencian las gráficas intraanuales (estacionales) de estas dos formaciones? ¿A qué crees que se deben tales diferencias?
+
+
+4. Interpretación integral del paisaje combinando datos de NDVI y ortofotos: ¿el efecto del cambio climático?
+
+     + Muévete a  la *Zona 10*. Se trata de una ladera de Sierra Nevada orientada al norte. En la actualidad esta zona está ocupada por ejemplares de *Quercus pyrenaica* en la parte inferior (cerca del río), piornales (*Genista sp.*) en la zona media, y pastizales (*Festuca sp.*) en la parte alta. Vamos a interpretar el funcionamiento de esta ladera y los cambios de estructura en los ecosistemas.
+
+     + Veamos cómo cambia la biomasa promedio conforme subimos en la ladera. ¿se observa algún patrón? En caso afirmativo, ¿a qué puede deberse ese patrón?
+
+     + Ahora analicemos cómo cambia la tendencia de NDVI en la ladera en cuestión. De nuevo, ¿observas algún patrón espacial? En caso afirmativo, ¿a qué podría deberse? Para entender mejor lo que ocurre aquí, vamos a utilizar una fuente de información nueva: la cubierta de nieve. El cambio climático está modificando el patrón de innivación en Sierra Nevada. Esto tendrá efectos en la vegetación. Trataremos de analizar cuáles serán estos efectos. La siguiente imagen muestra la tendencia en la duración de nieve en Sierra Nevada. Para generarla se han usado imágenes de satélite del sensor MODIS, de la NASA.
+
+
+![graph](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/refs/heads/main/imagenes/tendencia_nieve_modis.png)
+
+5. Interpretación integral del paisaje combinando datos de NDVI y ortofotos: Efectos de los cambios de uso del suelo
+
+   + La respuesta que hemos trabajado en clase anteriormente nos da información relevante sobre lo que ha pasado en esta zona en los últimos 20 años. Pero, ¿podemos irnos un poco más atrás en la historia? En nuestro proyecto de QGIS tenemos fotografías aéreas desde el año 1998 hasta la actualidad. Ahora incorporaremos una más. En este caso del año 1956. Se trata de la primera fotografía aérea que se ha tomado en España. Puedes incorporarla a tu proyecto como un servicio WMS pegando la siguiente dirección: `http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_Ortofoto_Andalucia_1956`. Una vez incorporada a tu proyecto, haremos lo siguiente:
+   
+   
       + Haz zoom sobre la parte de la *Zona 10* más cercana al río. 
+   
       + Mueve la fotografía de 1956 justo arriba de la de 1998.
+   
       + Activa la foto de 1956. ¿Cómo era el paisaje en ese año? ¿había más o menos cobertura vegetal?
+   
       + Ahora ve activando las demás fotos para ver cómo ha cambiado la estructura del paisaje. Responde las siguientes preguntas:
-
-        + ¿Qué observas? ¿Crees que ha aumentado o disminuido la cubierta vegetal (y por tanto el NDVI) desde 1956 hasta la actualidad?
-        + ¿A qué se debe el cambio observado?
-
+        
+   
+   
+      + ¿Qué observas? ¿Crees que ha aumentado o disminuido la cubierta vegetal (y por tanto el NDVI) desde 1956 hasta la actualidad?
+   
+      + ¿A qué se debe el cambio observado?
+   
+   
       + La respuesta a todas estas preguntas está relacionada con el concepto de "cambio de usos del suelo" y también con las consecuencias que el cambio climático empieza a tener en nuestra zona. 
-
+   
 
 
 
