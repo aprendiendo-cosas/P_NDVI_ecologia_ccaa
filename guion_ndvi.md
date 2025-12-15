@@ -4,7 +4,7 @@
 > + **Versión**: 2025-2026
 > + **Asignatura (grado)**: Ecología (Ciencias ambientales)
 > + **Autor**: Curro Bonet-García (fjbonet@uco.es)
-> + **Duración**: 4 horas en clase y 1.5 horas en casa.
+> + **Duración**: 5 horas en clase y 1.5 horas en casa.
 
 ![portada](https://raw.githubusercontent.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/refs/heads/main/imagenes/portada.png)
 
@@ -183,7 +183,7 @@ En las gráficas anteriores vemos cómo en algunos píxeles hay una tendencia ha
 
 1. Para completar esta sección debes de hacer también la anterior.
 2. Volvemos a Rstudio.
-3. Ejecutaremos un test estadístico llamado [Mann Kendall](https://www.statisticshowto.datasciencecentral.com/mann-kendall-trend-test/) sobre todas las bandas del objeto multicapa creado anteriormente. Este test permite analizar la evolución temporal de una serie de datos identificando si la tendencia es ascentente o descendente. Es un test no paramétrico, así que puede usarse en todas las distribuciones de datos. Para hacer esto pega el siguiente código en RStudio:
+3. Ejecutaremos un test estadístico llamado [Mann Kendall](https://www.statisticshowto.com/mann-kendall-trend-test/) sobre todas las bandas del objeto multicapa creado anteriormente. Este test permite analizar la evolución temporal de una serie de datos identificando si la tendencia es ascentente o descendente. Es un test no paramétrico, así que puede usarse en todas las distribuciones de datos. Para hacer esto pega el siguiente código en RStudio:
 4. "Encapsulamos" el test estadístico  [Mann Kendall](https://www.rdocumentation.org/packages/Kendall/versions/2.2/topics/MannKendall) en una funciónde R `fun_k`.
 
  ```r
@@ -249,7 +249,7 @@ Si has concluido todo con éxito, recibe mis felicitaciones :) Para seguir neces
 
 Verás que cada polígono de la capa de zonas de interés tiene un número. Cada uno nos permite identificar distintos elementos interesantes a las tres escalas de trabajo que hemos experimentado.
 
-Para facilitarte las cosas he creado [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/resultados.zip) proyecto de qgis. Contiene conexiones a varias fotografías aéreas y a las capas que hemos creado durante la práctica. Para que funcione bien debemos de ponerlo en la misma carpeta en la que están todas las capas. 
+Para facilitarte las cosas he creado [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/resultados.zip) proyecto de qgis. Contiene conexiones a varias fotografías aéreas y a las capas que hemos creado durante la práctica. Para que funcione bien debemos de ponerlo en la misma carpeta en la que están todas las capas. Si has ido completando tu propio proyecto durante las prácticas, no te hará falta este. La única diferencia entre este y el que hayas hecho tú es que contiene una fotografía antigua de 1956. Eso y que las capas se han ordenado para mejorar la visualización.
 
 1. Escala bidecadal:
 
