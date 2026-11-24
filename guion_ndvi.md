@@ -97,7 +97,7 @@ Las siguientes secciones contienen información sobre cómo completar toda la pr
 2. Ahora vamos a preparar un proyecto de QGIS en el que visualizar todos los resultados que obtengamos. En dicho proyecto pondremos ortofotografías de varios años para poder distinguir cuándo los cambios en el funcionamiento del bosque están alineados o no con cambios en su estructura. Para añadir estas fotografías a un proyecto de QGIS tienes dos opciones:
 
    * Opción fácil: 
-     * Descarga y descomprime [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/2025_2026/geoinfo/ortofotos_wms.zip) proyecto de QGIS a la carpeta en la que estés trabajando y ábrelo. Verás que se cargan ortofotografías de varias fechas. Todas ellas proceden de servicios WMS que yo he preparado para tí. 
+     * Descarga y descomprime [este](https://github.com/aprendiendo-cosas/P_NDVI_ecologia_ccaa/raw/main/geoinfo/ortofotos_wms.zip) proyecto de QGIS a la carpeta en la que estés trabajando y ábrelo. Verás que se cargan ortofotografías de varias fechas. Todas ellas proceden de servicios WMS que yo he preparado para tí. 
      * Guarda el proyecto y sigue con las distintas secciones.
      * Lo malo de esta opción es que, según he visto en algunos grupos, el proyecto a veces no carga bien las imágenes. Otras veces este proyecto genera problemas con la herramienta de QGIS que usamos para mostrar la gráfica de la serie temporal de NDVI. 
    * Opción menos fácil pero más segura: Esta opción consiste en que tú construyas tu propio proyecto de QGIS con las ortofotos que necesitamos. Sigue estos pasos. [Este](https://www.youtube.com/watch?v=jlW6RTFvIfo) vídeo también describe bien cómo proceder:
